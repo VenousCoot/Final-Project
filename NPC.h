@@ -18,7 +18,7 @@ public:
     // Constructor
     NPC(const std::string& npcName, int initialHealth, int initialAttack , int attackW, int blockW, int doNothingW, int specialW, int instaW);
 
-    // Getters
+    // Getter
     std::string getName() const;
     int getHealth() const;
     int getAttack() const;

@@ -3,7 +3,7 @@
 #include <ctime> // For time()
 
 int main() {
-    // Seed the random number generator
+    // Seed the random number geerator
     srand(static_cast<unsigned>(time(0)));
 
     // Create multiple NPCs with different stats, weights, and initial attack values
