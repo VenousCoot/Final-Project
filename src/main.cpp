@@ -1,3 +1,9 @@
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+
 int main()
 {
 	cout <<"Welcome to Hell Adventurer, this is Newark Liberty International Airport!" << endl;
