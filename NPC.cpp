@@ -1,6 +1,6 @@
 #include "NPC.h"
 #include <iostream>
-#include <cstdlib> // For rand()
+#include <cstdlib>
 
 // Constructor
 NPC::NPC(const std::string& npcName, int initialHealth, int initialAttack,
