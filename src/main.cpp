@@ -19,7 +19,6 @@ int main()
     cout << "Welcome to Hell Adventurer, this is Newark Liberty International Airport!" << endl;
     cout << "Voted the worst airport in the United States according to AirHelp's Global Airport Ranking (2019)." << endl;
     cout << "It looks like you have a flight departing in ... 1 hour!! Better Hurry!" << endl;    
-  
         // int playerCurrency = 150;          // Starting currency for the player
         int playerDamageReduction = 0;  // Default damage reduction
 
@@ -80,11 +79,11 @@ int main()
 
     if (Receptionist) {
         cout << Receptionist->getName() << " survived the fight with " << Receptionist->getHealth() << " health remaining."
-             << endl;
+            << endl;
     }
     if (player.get_parameter("hp") > 0) {
         cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining."
-             << endl;
+            << endl;
     }
 
 
@@ -96,11 +95,11 @@ int main()
 
     if (TSA_Agent) {
         cout << TSA_Agent->getName() << " survived the fight with " << TSA_Agent->getHealth() << " health remaining."
-             << endl;
+            << endl;
     }
     if (player.get_parameter("hp") > 0) {
         cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining."
-             << endl;
+            << endl;
     }
     return 0;
 }
