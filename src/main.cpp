@@ -19,12 +19,7 @@ int main()
     cout << "Welcome to Hell Adventurer, this is Newark Liberty International Airport!" << endl;
     cout << "Voted the worst airport in the United States according to AirHelp's Global Airport Ranking (2019)." << endl;
     cout << "It looks like you have a flight departing in ... 1 hour!! Better Hurry!" << endl;    
-
-        std::vector<Item> shields;
-        std::vector<Item> swords;
-        std::vector<Item> potions;
-        std::vector<Item> shopItems;
-
+  
         // int playerCurrency = 150;          // Starting currency for the player
         int playerDamageReduction = 0;  // Default damage reduction
 
@@ -107,6 +102,5 @@ int main()
         cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining."
              << endl;
     }
-
     return 0;
 }
