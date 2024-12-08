@@ -46,7 +46,7 @@ void Combat::resolveActions(NPC& npc1, NPC& npc2, const std::string& action1, co
         std::cout << npc1.getName() << " uses a special attack on " << npc2.getName() << " for " << npc1.getAttack() * 2 << " damage." << std::endl;
     } else if (action1 == "insta kill") {
         npc2.changeHealth(-npc2.getHealth());
-        std::cout << npc1.getName() << " is escorted off the plane by air marshal Simon Miller " << npc2.getName() << "." << std::endl;
+        std::cout << npc2.getName() << " is escorted off the plane by air marshal Simon Miller" << "." << std::endl;
     }
 
     if (action2 == "attack" && action1 != "block") {
@@ -55,5 +55,11 @@ void Combat::resolveActions(NPC& npc1, NPC& npc2, const std::string& action1, co
     } else if (action2 == "attack" && action1 == "block") {
         npc1.changeHealth(-std::floor(npc2.getAttack() / 2));
         std::cout << npc2.getName() << " attacks " << npc1.getName() << " but " << npc1.getName() << " blocks, reducing damage to " << std::floor(npc2.getAttack() / 2) << "." << std::endl;
+    } else if (action2 == "special attack") {
+        npc1.changeHealth(-npc2.getAttack() * 2);
+        std::cout << npc2.getName() << " uses a special attack on " << npc1.getName() << " for " << npc2.getAttack() * 2 << " damage." << std::endl;
+    } else if (action2 == "insta kill") {
+        npc1.changeHealth(-npc1.getHealth());
+        std::cout << npc1.getName() << " is escorted off the plane by air marshal Simon Miller" << "." << std::endl;
     }
 }

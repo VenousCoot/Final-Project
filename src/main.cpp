@@ -22,7 +22,7 @@ int main()
 
         // Create multiple NPCs with different stats, weights, and initial attack values
         NPC Receptionist("Receptionist", 10, 2, 30, 30, 40, 0, 0);
-        NPC TSA_Agent("TSA_Agent", 20, 2, 30, 30, 40, 0, 0);
+        NPC TSA_Agent("TSA Agent", 20, 2, 30, 30, 40, 0, 0);
 
 
 //        TEST CODE FOR NPC FUNCTIONS

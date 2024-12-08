@@ -59,7 +59,7 @@ std::string NPC::performAction() {
         std::cout << name << " uses a special attack! Deals " << attack * 2 << " damage!" << std::endl;
     } else {
         action = "insta kill";
-        std::cout << name << " Air Marshal personally escorts you off of the plane." << std::endl;
+//        std::cout << name << " Air Marshal personally escorts you off of the plane." << std::endl;
     }
 
     return action;

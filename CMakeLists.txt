@@ -27,5 +27,4 @@ file(GLOB all_SRCS
 # The other arguments are source files.
 # Header files are not needed in add_executable(), assuming they are properly included.
 add_executable(${CMAKE_PROJECT_NAME} ${all_SRCS}
-        src/Combat.cpp
-        include/Combat.h)
+        )
