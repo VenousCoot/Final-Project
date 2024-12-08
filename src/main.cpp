@@ -1,7 +1,8 @@
 #include <string>
 #include "NPC.h"
-#include <iostream>
 #include <ctime>
+#include "items.h"
+#include <vector>
 #include "Combat.h"
 #include <limits>
 #include <memory>
@@ -18,8 +19,24 @@ int main()
     cout << "Voted the worst airport in the United States according to AirHelp's Global Airport Ranking (2019)." << endl;
     cout << "It looks like you have a flight departing in ... 1 hour!! Better Hurry!" << endl;    
 
+        std::vector<Item> shields;
+        std::vector<Item> swords;
+        std::vector<Item> potions;
+        std::vector<Item> shopItems;
 
-        // Seed the random number generator
+        // int playerCurrency = 150;          // Starting currency for the player
+        int playerDamageReduction = 0;  // Default damage reduction
+
+        // Initialize items
+        // initializeGroupedItems(shields, swords, potions);
+        // initializeShopItems(shopItems);
+
+
+
+
+
+
+    // Seed the random number geerator
         srand(static_cast<unsigned>(time(0)));
 
         // Create multiple NPCs with different stats, weights, and initial attack values
