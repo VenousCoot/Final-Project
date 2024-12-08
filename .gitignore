@@ -36,4 +36,5 @@
 
 # Ignore certain directories (for shaan)
 *build
+*.vs
 
