@@ -1,8 +1,12 @@
 #include <string>
 #include <iostream>
 #include "NPC.h"
-#include <iostream>
 #include <ctime>
+#include "items.h"
+#include <vector>
+
+
+
 
 using namespace std;
 
@@ -16,7 +20,39 @@ int main()
 
 
 
-        // Seed the random number geerator
+        std::vector<Item> shields;
+        std::vector<Item> swords;
+        std::vector<Item> potions;
+        std::vector<Item> shopItems;
+
+        int playerCurrency = 150;          // Starting currency for the player
+        int playerDamageReduction = 0;  // Default damage reduction
+
+        // Initialize items
+        initializeGroupedItems(shields, swords, potions);
+        initializeShopItems(shopItems);
+
+        // Display grouped items
+        std::cout << "======================================== Dropped Items ====================================================" << std::endl;
+        displayGroupedItems("Shield Items", shields);
+        displayGroupedItems("Sword Items", swords);
+        displayGroupedItems("Potion Items", potions);
+
+        // Display shop items and allow purchasing
+        std::cout << "======================================== Shop Items ====================================================" << std::endl;
+        purchaseItem(shopItems, playerCurrency, playerDamageReduction);
+
+        // Final player state
+        std::cout << "\nFinal Player State:" << std::endl;
+        std::cout << "Currency: $" << playerCurrency << ", Damage Reduction: " << playerDamageReduction << std::endl;
+
+
+
+
+
+
+
+    // Seed the random number geerator
         srand(static_cast<unsigned>(time(0)));
 
         // Create multiple NPCs with different stats, weights, and initial attack values
