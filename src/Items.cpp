@@ -18,22 +18,28 @@ void Item::display() const {
 void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& swords, std::vector<Item>& potions) {
     // Shields
     shields.push_back(Item("Money", "Shields", 0, 3, 0, false));
-    shields.push_back(Item("Security Vest", "Shields", 0, 2, 0, false));
+    shields.push_back(Item("Security Vest", "Shields", 0, 2, 0, false)); //Base stat increase
+    shields.push_back(Item("Meat Shield", "Shields", 0, 5, 0, false)); //One time use
+    
 
     // Swords
-    swords.push_back(Item("Styling Cap", "Swords", 1, 0, 0, false));
-    swords.push_back(Item("TSA Beat-stick", "Swords", 1, 0, 0, false));
+    swords.push_back(Item("Stanley Cup", "Swords", 1, 0, 0, false)); //Base stat increase
+    swords.push_back(Item("TSA Beat-stick", "Swords", 1, 0, 0, false)); //Base stat increase
+    swords.push_back(Item("Stun Gun", "Swords", 2, 0, 0, false)); //Base stat increase
+    swords.push_back(Item("Dirty Needle", "Swords", 0, 0, 0, false)); //Automatically Applied
+    swords.push_back(Item("TSA Service Weapon", "Swords", 12, 0, 0, false)); //OTU
 
     // Potions
-    potions.push_back(Item("Confiscated Bottle of Whiskey", "Potions", 3, 0, 0, false));
-    potions.push_back(Item("Brown Banana", "Potions", 0, 3, 0, false));
+    potions.push_back(Item("Confiscated Bottle of Whiskey", "Potions", 3, 0, 0, false)); //OTU
+    potions.push_back(Item("Brown Banana", "Potions", 0, 3, 0, false)); // OTU
+    potions.push_back(Item("Shake Shack", "Potions", 0, 6, 0, false)); // OTU
 }
 
 // Initialize shop items
 void initializeShopItems(std::vector<Item>& shopItems) {
-    shopItems.push_back(Item("Dirty Needle", "Swords", 1, -1, 70, true));
+    shopItems.push_back(Item("Dirty Needle", "Swords", 0, 0, 70, true));
     shopItems.push_back(Item("Meat Shield", "Shields", 0, 5, 60, true));
-    shopItems.push_back(Item("Shake Shack", "Health", 0, 6, 20, true));
+    shopItems.push_back(Item("Shake Shack", "Potions", 0, 6, 20, true));
     shopItems.push_back(Item("Boarding Pass", "Special", 0, 0, 140, true));
 }
 
