@@ -22,5 +22,6 @@ void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& sword
 void initializeShopItems(std::vector<Item>& shopItems);
 void displayGroupedItems(const std::string& category, const std::vector<Item>& items);
 void purchaseItem(std::vector<Item>& shopItems, int& playerCurrency, int& playerDamageReduction);
+void DisplayDroppedItems();
 
 #endif // ITEMS_H

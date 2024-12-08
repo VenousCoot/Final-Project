@@ -17,7 +17,8 @@ void Item::display() const {
 // Initialize grouped items
 void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& swords, std::vector<Item>& potions) {
     // Shields
-    shields.push_back(Item("Money", "Shields", 0, 3, 0, false));
+    shields.push_back(Item("Money", "Shields", 0, 3, 0, false)); //I honestly have no idea
+    shields.push_back(Item("Advil", "Shields", 0, 1, 0, false)); //Increases MAXIMUM HEALTH by 1
     shields.push_back(Item("Security Vest", "Shields", 0, 2, 0, false)); //Base stat increase
     shields.push_back(Item("Meat Shield", "Shields", 0, 5, 0, false)); //One time use
     
@@ -30,7 +31,7 @@ void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& sword
     swords.push_back(Item("TSA Service Weapon", "Swords", 12, 0, 0, false)); //OTU
 
     // Potions
-    potions.push_back(Item("Confiscated Bottle of Whiskey", "Potions", 3, 0, 0, false)); //OTU
+    potions.push_back(Item("Half a Bottle of Whiskey", "Potions", 3, 0, 0, false)); //OTU
     potions.push_back(Item("Brown Banana", "Potions", 0, 3, 0, false)); // OTU
     potions.push_back(Item("Shake Shack", "Potions", 0, 6, 0, false)); // OTU
     potions.push_back(Item("Stylish Hat", "Potions", 0, 0, 0, false)); // Can't Use just exists in the inventory
@@ -88,3 +89,5 @@ void purchaseItem(std::vector<Item>& shopItems, int& playerCurrency, int& player
         std::cout << "Invalid choice!" << std::endl;
     }
 }
+
+void
