@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//
 // Constructor
 main_character::main_character(){};
 
@@ -18,10 +19,11 @@ void main_character::set_name(const string name){
 }
 
 // Function for player to pick a name for their character:
+// Function for player to pick a name for their character
 void main_character::pick_player_name(){
     string character_name;
     cout << "Please enter your name / The name of your character: ";
-    getline(cin, character_name); // Read entire line for name   
+    getline(cin, character_name); // Read entire line for name
 
     bool verified = false;
     while(!verified){
@@ -30,22 +32,21 @@ void main_character::pick_player_name(){
         cout << "Is this right? (Type '1' for yes, '2' for no): ";
         getline(cin, selection);
         while(selection != "1" && selection != "2"){
-			getline(cin, character_name); // Read entire line for name   
-            set_name(character_name); // Update the main_character object with the new name
             cout << "Input a number buddy... either 1 or 2: ";
-            cin >> selection;
+            getline(cin, selection); // Read entire line for selection
         }
 
         if (selection == "1"){
+            set_name(character_name); // Update the main_character object with the confirmed name
             cout << "Okay, then let's continue, " << get_name() << "!" << endl;
             verified = true;
         } else if (selection == "2"){
             cout << "Please re-input your name!: ";
-            getline(cin, character_name); // Read entire line for name   
-            set_name(character_name); // Update the main_character object with the new name
-    	}
-	}
+            getline(cin, character_name); // Read entire line for new name
+        }
+    }
 }
+
 
 // Players action choises:
 string main_character::player_action(){
