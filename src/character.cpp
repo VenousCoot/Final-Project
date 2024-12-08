@@ -146,4 +146,6 @@ void main_character::parameter_selection(const string& param_name, int value) {
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INVENTORY MANAGEMENT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// void main_character::add_item(const Item& item){}
+void main_character::add_item(const Item& item){
+    inventory.push_back(item);
+}
