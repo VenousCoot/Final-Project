@@ -1,12 +1,13 @@
 #ifndef ITEMCHOICE_H
 #define ITEMCHOICE_H
+#include "character.h"
 
 
-void LobbyItems();
+void LobbyItems(const main_character& mc);
 
-void SecurityItems();
+void SecurityItems(const main_character& mc);
 
-void TerminalItems();
+void TerminalItems(const main_character& mc);
 
-void GateItems();
+void GateItems(const main_character& mc);
 #endif
