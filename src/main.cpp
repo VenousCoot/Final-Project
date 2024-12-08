@@ -23,8 +23,10 @@ int main()
         srand(static_cast<unsigned>(time(0)));
 
         // Create multiple NPCs with different stats, weights, and initial attack values
-    auto Receptionist = make_unique<NPC>("Receptionist", 10, 2, 30, 30, 40, 0, 0);
+    auto npc_player = make_unique<NPC>("npc_player", 10, 2, 30, 30, 40, 0, 0);
     auto TSA_Agent = make_unique<NPC>("TSA_Agent", 20, 2, 30, 30, 40, 0, 0);
+
+
 
 
 //        TEST CODE FOR NPC FUNCTIONS
@@ -53,11 +55,11 @@ int main()
 
 // TEST CODE FOR COMBAT INTERACTIONS
 
-    Combat::startCombat(Receptionist, TSA_Agent);
+    Combat::startCombat(npc_player, TSA_Agent);
 
     // Check and print the health of each NPC after combat
-    if (Receptionist) {
-        cout << Receptionist->getName() << " survived the fight with " << Receptionist->getHealth()
+    if (npc_player) {
+        cout << npc_player->getName() << " survived the fight with " << npc_player->getHealth()
              << " health remaining." << endl;
     }
 
