@@ -43,6 +43,8 @@ class main_character {
         void add_item(const Item& item);
         void remove_item(const string& item_name);
         void display_inventory() const;
+        void use_item();
+        void apply_item(Item item);
 };
 
 #endif // CHARACTER_H

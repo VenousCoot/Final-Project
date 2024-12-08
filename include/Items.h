@@ -12,8 +12,12 @@ public:
     int health;
     int cost;
     bool isShopItem; // True for shop items, false for drop items
+    bool isOTU; // If it's one time use
+    bool isUsed; // if the item was used
 
-    Item(std::string itemName, std::string itemCategory, int itemDamage, int itemHealth, int itemCost, bool shopItem);
+    std::string get_name();
+
+    Item(std::string itemName, std::string itemCategory, int itemDamage, int itemHealth, int itemCost, bool shopItem, bool OUT, bool used);
     void display() const;
 };
 

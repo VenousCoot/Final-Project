@@ -2,6 +2,8 @@
 #include <cmath>
 #include <string>
 #include "character.h"
+#include <algorithm>
+#include "Items.h"
 
 using namespace std;
 
@@ -17,11 +19,11 @@ void main_character::set_name(const string name){
     main_character::name = name;
 }
 
-// Function for player to pick a name for their character:
+// Function for player to pick a name for their character
 void main_character::pick_player_name(){
     string character_name;
     cout << "Please enter your name / The name of your character: ";
-    getline(cin, character_name); // Read entire line for name   
+    getline(cin, character_name); // Read entire line for name
 
     bool verified = false;
     while(!verified){
@@ -30,21 +32,19 @@ void main_character::pick_player_name(){
         cout << "Is this right? (Type '1' for yes, '2' for no): ";
         getline(cin, selection);
         while(selection != "1" && selection != "2"){
-			getline(cin, character_name); // Read entire line for name   
-            set_name(character_name); // Update the main_character object with the new name
             cout << "Input a number buddy... either 1 or 2: ";
-            cin >> selection;
+            getline(cin, selection); // Read entire line for selection
         }
 
         if (selection == "1"){
+            set_name(character_name); // Update the main_character object with the confirmed name
             cout << "Okay, then let's continue, " << get_name() << "!" << endl;
             verified = true;
         } else if (selection == "2"){
             cout << "Please re-input your name!: ";
-            getline(cin, character_name); // Read entire line for name   
-            set_name(character_name); // Update the main_character object with the new name
-    	}
-	}
+            getline(cin, character_name); // Read entire line for new name
+        }
+    }
 }
 
 // Players action choises:
@@ -60,7 +60,7 @@ string main_character::player_action(){
         }else if(action == "2") {
             return "block";
         }else if(action == "3"){
-            cout << "Placeholder for later (input the item usage function here)" << endl;
+            display_inventory();
             return "item";
         }else{
             cout << "Okay wise guy, how about you enter something valid here 0_0" << endl;
@@ -148,4 +148,85 @@ void main_character::parameter_selection(const string& param_name, int value) {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INVENTORY MANAGEMENT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void main_character::add_item(const Item& item){
     inventory.push_back(item);
+}
+
+void main_character::remove_item(const string& item_name) {
+    bool item_found = false;
+    for (auto it = inventory.begin(); it != inventory.end(); ++it) {
+        if (it->get_name() == item_name) {
+            inventory.erase(it);
+            std::cout << main_character::name << item_name << "\" used." << std::endl;
+            item_found = true;
+            break;
+        }
+    }
+
+    if (!item_found) {
+        std::cout << "Item \"" << item_name << "\" not found in inventory. Please try again: ";
+        std::string new_item_name;
+        std::cin >> new_item_name;
+        remove_item(new_item_name); // Recursive call
+    }
+}
+
+void main_character::display_inventory() const {
+    cout << "Inventory:" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    for (const auto& item : inventory) {
+        item.display();
+    }
+}
+
+// Use item function:
+void main_character::use_item(){
+    string item_name;
+    display_inventory();
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "Input the name of the item you want to use" << endl;
+    cin >> item_name;
+
+    bool item_found = false;
+    for (auto it = inventory.begin(); it != inventory.end(); ++it) {
+        if (it->get_name() == item_name) {
+            Item item_to_use = *it; // Store the Item object
+            apply_item(item_to_use); // Pass the Item object to apply_item
+            item_found = true;
+            break;
+        }
+    }
+
+    if (!item_found) {
+        std::cout << "Item \"" << item_name << "\" not found in inventory. Please try again: ";
+        std::string new_item_name;
+        std::cin >> new_item_name;
+        remove_item(new_item_name); // Recursive call
+    }
+
+}
+
+// Apply stats of an item:
+void main_character::apply_item(Item item){
+    if(item.isOTU && item.category != "Potions"){
+        string item_name;
+        if(item.damage != 0){
+            item_name = "att";
+            main_character::update_parameter(item_name, item.damage);
+        }
+        if(item.health != 0){
+            item_name = "hp";
+            main_character::update_parameter(item_name, item.health);
+        }
+        remove_item(item.name);
+    }else{
+        string item_name;
+        if(item.damage != 0){
+            item_name = "att";
+            main_character::update_parameter(item_name, item.damage);
+        }
+        if(item.health != 0){
+            item_name = "hp";
+            main_character::update_parameter(item_name, item.health);
+        }
+        item.isUsed = true;
+    }
 }
