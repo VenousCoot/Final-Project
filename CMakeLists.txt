@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22) # Specify CMake version.
-project(Final_Project) # A project name. This can be anything.
+project(Final-Project) # A project name. This can be anything.
 set(CMAKE_CXX_STANDARD 20) # Specify C++ version.
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
 add_compile_definitions(_USE_MATH_DEFINES)
@@ -8,15 +8,15 @@ add_compile_definitions(_USE_MATH_DEFINES)
 message(STATUS "CMakeLists.txt is at ${PROJECT_SOURCE_DIR}") # To print something.
 
 include_directories(
-    ${PROJECT_SOURCE_DIR}/include
-    ${PROJECT_SOURCE_DIR}/src
+        ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/src
 )
 
 file(GLOB all_SRCS
-    "${PROJECT_SOURCE_DIR}/include/*.h"
-    "${PROJECT_SOURCE_DIR}/include/*.hpp"
-    "${PROJECT_SOURCE_DIR}/src/*.cpp"
-    "${PROJECT_SOURCE_DIR}/src/*.c"
+        "${PROJECT_SOURCE_DIR}/include/*.h"
+        "${PROJECT_SOURCE_DIR}/include/*.hpp"
+        "${PROJECT_SOURCE_DIR}/src/*.cpp"
+        "${PROJECT_SOURCE_DIR}/src/*.c"
 )
 
 # Create a binary file.
@@ -27,4 +27,3 @@ file(GLOB all_SRCS
 # The other arguments are source files.
 # Header files are not needed in add_executable(), assuming they are properly included.
 add_executable(${CMAKE_PROJECT_NAME} ${all_SRCS})
-
