@@ -26,5 +26,4 @@ file(GLOB all_SRCS
 # It can be anything. In this case, it is set to be the project name.
 # The other arguments are source files.
 # Header files are not needed in add_executable(), assuming they are properly included.
-add_executable(${CMAKE_PROJECT_NAME} ${all_SRCS}
-        )
+add_executable(${CMAKE_PROJECT_NAME} ${all_SRCS})
