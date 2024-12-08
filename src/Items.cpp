@@ -33,6 +33,8 @@ void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& sword
     potions.push_back(Item("Confiscated Bottle of Whiskey", "Potions", 3, 0, 0, false)); //OTU
     potions.push_back(Item("Brown Banana", "Potions", 0, 3, 0, false)); // OTU
     potions.push_back(Item("Shake Shack", "Potions", 0, 6, 0, false)); // OTU
+    potions.push_back(Item("Stylish Hat", "Potions", 0, 0, 0, false)); // Can't Use just exists in the inventory
+    potions.push_back(Item("Suspicious Ticking Suitcase", "Potions", 0, 0, 0, false)); // OTU
 }
 
 // Initialize shop items
