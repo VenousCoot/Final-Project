@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//
 // Constructor
 main_character::main_character(){};
 
