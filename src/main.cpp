@@ -18,8 +18,6 @@ int main()
     cout << "Voted the worst airport in the United States according to AirHelp's Global Airport Ranking (2019)." << endl;
     cout << "It looks like you have a flight departing in ... 1 hour!! Better Hurry!" << endl;    
 
-    main_character mc("Default");
-
 
         // Seed the random number generator
         srand(static_cast<unsigned>(time(0)));

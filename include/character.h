@@ -2,6 +2,7 @@
 #define CHARACTER_H
 
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -17,7 +18,7 @@ class main_character {
         int money = 3;
     public:
         // Constructor
-        main_character(const string& input_name);
+        main_character();
         // Main character function to select a name:
         void pick_player_name();
         string get_name();

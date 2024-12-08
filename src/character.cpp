@@ -6,8 +6,7 @@
 using namespace std;
 
 // Constructor
-main_character::main_character(const string& input_name) 
-    : name(input_name){};
+main_character::main_character(){};
 
 // Just function for name
 string main_character::get_name(){
@@ -29,14 +28,13 @@ void main_character::pick_player_name(){
         string selection;
         cout << "Your name is: " << character_name << endl;
         cout << "Is this right? (Type '1' for yes, '2' for no): ";
-        cin >> selection;
+        getline(cin, selection);
         while(selection != "1" && selection != "2"){
 			getline(cin, character_name); // Read entire line for name   
             set_name(character_name); // Update the main_character object with the new name
             cout << "Input a number buddy... either 1 or 2: ";
             cin >> selection;
         }
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         if (selection == "1"){
             cout << "Okay, then let's continue, " << get_name() << "!" << endl;
