@@ -4,6 +4,7 @@
 #include <iostream>
 #include <ctime>
 #include "Combat.h"
+#include <memory>
 
 using namespace std;
 
@@ -23,8 +24,8 @@ int main()
         srand(static_cast<unsigned>(time(0)));
 
         // Create multiple NPCs with different stats, weights, and initial attack values
-    auto npc_player = make_unique<NPC>("npc_player", 10, 2, 30, 30, 40, 0, 0);
-    auto TSA_Agent = make_unique<NPC>("TSA_Agent", 20, 2, 30, 30, 40, 0, 0);
+    auto npc_player = make_unique<NPC>("npc_player", 10, 2, 80, 10, 10, 0, 0);
+    auto TSA_Agent = make_unique<NPC>("TSA_Agent", 20, 2, 80, 10, 10, 0, 0);
 
 
 

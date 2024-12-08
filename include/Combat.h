@@ -2,6 +2,7 @@
 #define COMBAT_H
 
 #include "NPC.h"
+#include <memory>
 
 class Combat {
 public:

@@ -2,6 +2,7 @@
 #include <thread>
 #include <iostream>
 #include <cmath>
+#include <memory>
 
 void Combat::startCombat(std::unique_ptr<NPC>& npc1, std::unique_ptr<NPC>& npc2) {
     while (npc1 && npc2 && npc1->getHealth() > 0 && npc2->getHealth() > 0) {
