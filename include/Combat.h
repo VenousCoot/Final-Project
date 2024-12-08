@@ -6,7 +6,7 @@
 class Combat {
 public:
     // Function to initiate combat between two NPCs
-    static void startCombat(NPC& npc1, NPC& npc2);
+    static void startCombat(std::unique_ptr<NPC>& npc1, std::unique_ptr<NPC>& npc2);
 
 private:
     // Helper function to handle a single combat round

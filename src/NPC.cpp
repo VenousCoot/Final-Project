@@ -2,12 +2,23 @@
 #include <iostream>
 #include <cstdlib>
 
+// Gloabal varable
+extern int Debug;
+
 // Constructor
 NPC::NPC(const std::string& npcName, int initialHealth, int initialAttack,
          int attackW, int blockW, int doNothingW, int specialW, int instaW)
         : name(npcName), health(initialHealth), attack(initialAttack),
           attackWeight(attackW), blockWeight(blockW),
           doNothingWeight(doNothingW), specialAttackWeight(specialW), instaKillWeight(instaW), action("") {}
+
+
+// Destructor
+NPC::~NPC() {
+    if (Debug) {
+        std::cout << name << " is being destroyed." << std::endl;
+    }
+}
 
 // Get the NPC's name
 std::string NPC::getName() const {

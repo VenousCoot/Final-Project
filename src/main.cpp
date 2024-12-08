@@ -7,6 +7,8 @@
 
 using namespace std;
 
+// Debug mode if = 1 then will print debugging messages example being object destroying messages
+int Debug = 0;
 
 int main()
 {
@@ -21,8 +23,8 @@ int main()
         srand(static_cast<unsigned>(time(0)));
 
         // Create multiple NPCs with different stats, weights, and initial attack values
-        NPC Receptionist("Receptionist", 10, 2, 30, 30, 40, 0, 0);
-        NPC TSA_Agent("TSA Agent", 20, 2, 30, 30, 40, 0, 0);
+    auto Receptionist = make_unique<NPC>("Receptionist", 10, 2, 30, 30, 40, 0, 0);
+    auto TSA_Agent = make_unique<NPC>("TSA_Agent", 20, 2, 30, 30, 40, 0, 0);
 
 
 //        TEST CODE FOR NPC FUNCTIONS
@@ -53,6 +55,16 @@ int main()
 
     Combat::startCombat(Receptionist, TSA_Agent);
 
+    // Check and print the health of each NPC after combat
+    if (Receptionist) {
+        cout << Receptionist->getName() << " survived the fight with " << Receptionist->getHealth()
+             << " health remaining." << endl;
+    }
 
-	return 0; 
+    if (TSA_Agent) {
+        cout << TSA_Agent->getName() << " survived the fight with " << TSA_Agent->getHealth() << " health remaining."
+             << endl;
+    }
+
+    return 0;
 }

@@ -3,23 +3,31 @@
 #include <iostream>
 #include <cmath>
 
-void Combat::startCombat(NPC& npc1, NPC& npc2) {
-    while (npc1.getHealth() > 0 && npc2.getHealth() > 0) {
+void Combat::startCombat(std::unique_ptr<NPC>& npc1, std::unique_ptr<NPC>& npc2) {
+    while (npc1 && npc2 && npc1->getHealth() > 0 && npc2->getHealth() > 0) {
         // Perform actions for both NPCs in parallel threads
-        std::thread thread1(combatRound, std::ref(npc1), std::ref(npc2));
-        std::thread thread2(combatRound, std::ref(npc2), std::ref(npc1));
+        std::thread thread1(combatRound, std::ref(*npc1), std::ref(*npc2));
+        std::thread thread2(combatRound, std::ref(*npc2), std::ref(*npc1));
 
         // Wait for both threads to finish
         thread1.join();
         thread2.join();
     }
 
-    if (npc1.getHealth() <= 0 && npc2.getHealth() <= 0) {
-        std::cout << "Both " << npc1.getName() << " and " << npc2.getName() << " are defeated!" << std::endl; }
-    else if (npc1.getHealth() <= 0) {
-        std::cout << npc1.getName() << " is defeated!" << std::endl; }
-    else if (npc2.getHealth() <= 0) {
-        std::cout << npc2.getName() << " is defeated!" << std::endl; }
+    // Check if NPCs have zero health to destroy them immediately
+    if (npc1 && npc1->getHealth() <= 0) {
+        std::cout << npc1->getName() << " is defeated!" << std::endl;
+        npc1.reset(); // Destroy npc1
+    }
+
+    if (npc2 && npc2->getHealth() <= 0) {
+        std::cout << npc2->getName() << " is defeated!" << std::endl;
+        npc2.reset(); // Destroy npc2
+    }
+
+    if (!npc1 && !npc2) {
+        std::cout << "Both combatants are defeated." << std::endl;
+    }
 }
 
 void Combat::combatRound(NPC& npc1, NPC& npc2) {
@@ -60,6 +68,6 @@ void Combat::resolveActions(NPC& npc1, NPC& npc2, const std::string& action1, co
         std::cout << npc2.getName() << " uses a special attack on " << npc1.getName() << " for " << npc2.getAttack() * 2 << " damage." << std::endl;
     } else if (action2 == "insta kill") {
         npc1.changeHealth(-npc1.getHealth());
-        std::cout << npc1.getName() << " is escorted off the plane by air marshal Simon Miller" << "." << std::endl;
+        std::cout << npc1.getName() << " is escorted off the plane by air marshal Simón Mueller" << "." << std::endl;
     }
 }
