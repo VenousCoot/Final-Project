@@ -22,8 +22,9 @@ void Item::display() const {
 void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& swords, std::vector<Item>& potions) {
     // Shields
     shields.push_back(Item("Money", "Shields", 0, 3, 0, false, false, false));
+    shields.push_back(Item("Advil", "Shields", 0, 1, 0, false, false, false)); //Increases MAXIMUM HEALTH by 1
     shields.push_back(Item("Security Vest", "Shields", 0, 2, 0, false, false, false)); //Base stat increase
-    shields.push_back(Item("Meat Shield", "Shields", 0, 5, 0, false, true, false)); //One time use
+    shields.push_back(Item("Meat Shield", "Shields", 0, 5, 0, false, false, false)); //One time use
     
 
     // Swords
@@ -34,11 +35,11 @@ void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& sword
     swords.push_back(Item("TSA Service Weapon", "Swords", 12, 0, 0, false, true, false)); //OTU
 
     // Potions
-    potions.push_back(Item("Half a Bottle of Whiskey", "Potions", 3, 0, 0, false, true, false)); //OTU
-    potions.push_back(Item("Brown Banana", "Potions", 0, 3, 0, false, true, false)); // OTU
-    potions.push_back(Item("Shake Shack", "Potions", 0, 6, 0, false, true, false)); // OTU
+    potions.push_back(Item("Half a Bottle of Whiskey", "Potions", 3, 0, 0, false, false, false)); //OTU
+    potions.push_back(Item("Brown Banana", "Potions", 0, 3, 0, false, false, false)); // OTU
+    potions.push_back(Item("Shake Shack", "Potions", 0, 6, 0, false, false, false)); // OTU
     potions.push_back(Item("Stylish Hat", "Potions", 0, 0, 0, false, false, false)); // Can't Use just exists in the inventory
-    potions.push_back(Item("Suspicious Ticking Suitcase", "Potions", 0, 0, 0, false, true, false)); // OTU
+    potions.push_back(Item("Suspicious Ticking Suitcase", "Potions", 0, 0, 0, false, false, false)); // OTU
 }
 
 // Initialize shop items
@@ -92,3 +93,5 @@ void purchaseItem(std::vector<Item>& shopItems, int& playerCurrency, int& player
         std::cout << "Invalid choice!" << std::endl;
     }
 }
+
+void
