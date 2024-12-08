@@ -4,7 +4,7 @@
 using namespace std;
 
 Security::Security() {
-	description = "Omnipresent Voice: You really beat up that middle aged woman didn't you? You feeling good about yourself? You feel like you're top dog now don't you";
+	description = "Omnipresent Voice: You really beat up that middle aged woman didn't you? You feeling good about yourself? You feel like you're top dog now don't you?";
 	npcName = "TSA Agent";
 }
 

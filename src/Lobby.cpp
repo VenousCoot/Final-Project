@@ -10,8 +10,7 @@ Lobby::Lobby() {
 
 void Lobby::enter() {
     cout << description << endl;
-    cout << npcName << endl;
-    cout << ": Welcome to Newark Airport! May I see your boarding pass?" << endl;
+    cout << npcName << ": Welcome to Newark Airport! May I see your boarding pass?" << endl;
 
     string playerInput;
     bool validInput = false;
@@ -23,7 +22,7 @@ void Lobby::enter() {
         getline(cin, playerInput);
 
         if (playerInput == "1") {
-            cout << npcName << ": Hmm… this sure doesn’t seem like it’s yours. Got any ID?" << endl;
+            cout << npcName << ": Hmm ...  this sure doesn`t seem like it`s yours. Got any ID?" << endl;
 
             validInput = false;
             while (!validInput) {

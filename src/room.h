@@ -28,7 +28,7 @@ private:
     string npcName;
 };
 
-class Terminal :public Room {
+class Terminal : public Room {
 public:
     Terminal();
     void enter() override;
@@ -37,18 +37,21 @@ private:
     string npcName2;
 };
 
-class Gate :public Room {
+class Gate : public Room {
 public:
-    Gate();
+    Gate(bool hasFirstClassBoardingPass);
     void enter() override;
 private:
     string npcName;
+    bool hasFirstClassBoardingPass;
 };
 
-class Plane :public Room {
+class Plane : public Room {
 public:
     Plane();
     void enter() override;
 private:
     string npcName;
 };
+
+#endif // ROOM_H
