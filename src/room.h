@@ -48,10 +48,11 @@ private:
 
 class Plane : public Room {
 public:
-    Plane();
+    Plane(bool hasStylishHat);
     void enter() override;
 private:
     string npcName;
+    bool hasStylishHat;
 };
 
 #endif // ROOM_H
