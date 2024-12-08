@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22) # Specify CMake version.
-project(Homework2) # A project name. This can be anything.
+project(Final_Project) # A project name. This can be anything.
 set(CMAKE_CXX_STANDARD 20) # Specify C++ version.
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
 add_compile_definitions(_USE_MATH_DEFINES)
