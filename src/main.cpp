@@ -1,12 +1,13 @@
 #include <string>
 #include "NPC.h"
 #include <ctime>
-#include "items.h"
+#include "Items.h"
 #include <vector>
 #include "Combat.h"
 #include <limits>
 #include <memory>
 #include "character.h"
+#include <iostream>
 
 using namespace std;
 

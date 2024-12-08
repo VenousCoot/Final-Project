@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "Items.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ class main_character {
         int sd = 0;
         int sa = 0;
         int money = 3;
+        vector <Item> inventory;
     public:
         // Constructor
         main_character();
@@ -36,6 +38,11 @@ class main_character {
 
         string player_action();
         // Player's actions 
+
+        // Inventory management functions
+        void add_item(const Item& item);
+        void remove_item(const string& item_name);
+        void display_inventory() const;
 };
 
 #endif // CHARACTER_H
