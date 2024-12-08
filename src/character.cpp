@@ -7,6 +7,7 @@
 
 using namespace std;
 
+//
 // Constructor
 main_character::main_character(){};
 
@@ -46,6 +47,7 @@ void main_character::pick_player_name(){
         }
     }
 }
+
 
 // Players action choises:
 string main_character::player_action(){

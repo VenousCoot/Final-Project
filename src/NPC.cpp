@@ -58,16 +58,16 @@ std::string NPC::performAction() {
 
     if (randomValue < attackWeight) {
         action = "attack";
-        std::cout << name << " attacks! Deals " << attack << " damage." << std::endl;
+//        std::cout << name << " attacks! Deals " << attack << " damage." << std::endl;
     } else if (randomValue < attackWeight + blockWeight) {
         action = "block";
-        std::cout << name << " blocks!" << std::endl;
+//        std::cout << name << " blocks!" << std::endl;
     } else if (randomValue < attackWeight + blockWeight + doNothingWeight) {
         action = "do nothing";
-        std::cout << name << " does nothing." << std::endl;
+//        std::cout << name << " does nothing." << std::endl;
     } else if (randomValue < attackWeight + blockWeight + doNothingWeight + specialAttackWeight) {
         action = "special attack";
-        std::cout << name << " uses a special attack! Deals " << attack * 2 << " damage!" << std::endl;
+//        std::cout << name << " uses a special attack! Deals " << attack * 2 << " damage!" << std::endl;
     } else {
         action = "insta kill";
 //        std::cout << name << " Air Marshal personally escorts you off of the plane." << std::endl;
