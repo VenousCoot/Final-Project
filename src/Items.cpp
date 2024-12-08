@@ -93,5 +93,3 @@ void purchaseItem(std::vector<Item>& shopItems, int& playerCurrency, int& player
         std::cout << "Invalid choice!" << std::endl;
     }
 }
-
-void
