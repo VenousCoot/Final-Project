@@ -144,3 +144,8 @@ void main_character::parameter_selection(const string& param_name, int value) {
         cout << "Invalid parameter name input. ERROR IN: character.cpp (set)" << endl;
     }
 }
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INVENTORY MANAGEMENT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void main_character::add_item(const Item& item){
+    inventory.push_back(item);
+}
