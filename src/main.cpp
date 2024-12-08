@@ -40,8 +40,14 @@ int main()
     // Seed the random number geerator
         srand(static_cast<unsigned>(time(0)));
 
+
+//        Character Creation
+    main_character player;
+    player.pick_player_name();
+
         // Create multiple NPCs with different stats, weights, and initial attack values
-    auto npc_player = make_unique<NPC>("npc_player", 10, 2, 80, 10, 10, 0, 0);
+
+    auto Receptionist = make_unique<NPC>("Receptionist", 10, 2, 80, 10, 10, 0, 0);
     auto TSA_Agent = make_unique<NPC>("TSA_Agent", 20, 2, 80, 10, 10, 0, 0);
 
 
@@ -73,17 +79,18 @@ int main()
 
 // TEST CODE FOR COMBAT INTERACTIONS
 
-    Combat::startCombat(npc_player, TSA_Agent);
+    Combat::startCombat(TSA_Agent, player);
 
     // Check and print the health of each NPC after combat
-    if (npc_player) {
-        cout << npc_player->getName() << " survived the fight with " << npc_player->getHealth()
-             << " health remaining." << endl;
-    }
 
     if (TSA_Agent) {
         cout << TSA_Agent->getName() << " survived the fight with " << TSA_Agent->getHealth() << " health remaining."
              << endl;
     }
+    if (player.get_parameter("hp") > 0) {
+        cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining."
+             << endl;
+    }
+
     return 0;
 }
