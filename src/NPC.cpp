@@ -2,12 +2,23 @@
 #include <iostream>
 #include <cstdlib>
 
+// Gloabal varable
+extern int Debug;
+
 // Constructor
 NPC::NPC(const std::string& npcName, int initialHealth, int initialAttack,
          int attackW, int blockW, int doNothingW, int specialW, int instaW)
         : name(npcName), health(initialHealth), attack(initialAttack),
           attackWeight(attackW), blockWeight(blockW),
-          doNothingWeight(doNothingW), specialAttackWeight(specialW), instaKillWeight(instaW) {}
+          doNothingWeight(doNothingW), specialAttackWeight(specialW), instaKillWeight(instaW), action("") {}
+
+
+// Destructor
+NPC::~NPC() {
+    if (Debug) {
+        std::cout << name << " is being destroyed." << std::endl;
+    }
+}
 
 // Get the NPC's name
 std::string NPC::getName() const {
@@ -41,19 +52,30 @@ void NPC::changeAttack(int amount) {
 }
 
 // Perform an action based on weights
-void NPC::performAction() const {
+std::string NPC::performAction() {
     int totalWeight = attackWeight + blockWeight + doNothingWeight + specialAttackWeight + instaKillWeight;
     int randomValue = rand() % totalWeight;
 
     if (randomValue < attackWeight) {
+        action = "attack";
         std::cout << name << " attacks! Deals " << attack << " damage." << std::endl;
     } else if (randomValue < attackWeight + blockWeight) {
+        action = "block";
         std::cout << name << " blocks!" << std::endl;
     } else if (randomValue < attackWeight + blockWeight + doNothingWeight) {
+        action = "do nothing";
         std::cout << name << " does nothing." << std::endl;
     } else if (randomValue < attackWeight + blockWeight + doNothingWeight + specialAttackWeight) {
+        action = "special attack";
         std::cout << name << " uses a special attack! Deals " << attack * 2 << " damage!" << std::endl;
     } else {
-        std::cout << name << " Air Marshal personally escorts you off of the plane" << std::endl;
+        action = "insta kill";
+//        std::cout << name << " Air Marshal personally escorts you off of the plane." << std::endl;
     }
+
+    return action;
+}
+
+std::string NPC::getAction() const {
+    return action;
 }
