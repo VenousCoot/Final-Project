@@ -35,8 +35,24 @@ int main()
     main_character player;
     player.pick_player_name();
 
-    player.add_item(Item("Sword", "Swords", 5,5,0,false,false,false));
-    
+    player.add_item(Item("Money", "Shields", 0, 3, 0, false, false, false)); // Base stat increase
+    player.add_item(Item("Security Vest", "Shields", 0, 2, 0, false, false, false)); // Base stat increase
+    player.add_item(Item("Meat Shield", "Shields", 0, 5, 0, false, true, false)); // One time use
+
+    player.add_item(Item("Stanley Cup", "Swords", 1, 0, 0, false, false, false)); // Base stat increase
+    player.add_item(Item("TSA Beat-stick", "Swords", 1, 0, 0, false, false, false)); // Base stat increase
+    player.add_item(Item("Stun Gun", "Swords", 2, 0, 0, false, false, false)); // Base stat increase
+    player.add_item(Item("Dirty Needle", "Swords", 0, 0, 0, false, false, false)); // Automatically Applied
+    player.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false, true, false)); // OTU
+
+    player.add_item(Item("Advil", "Shields", 0, 1, 0, false, false, false)); // Increases MAXIMUM HEALTH by 1
+    player.add_item(Item("Half a Bottle of Whiskey", "Potions", 3, 0, 0, false, true, false)); // OTU
+    player.add_item(Item("Slightly Browned Banana", "Potions", 0, 3, 0, false, true, false)); // OTU
+    player.add_item(Item("Shake Shack", "Potions", 0, 6, 0, false, true, false)); // OTU
+    player.add_item(Item("Stylish Hat", "Potions", 0, 0, 0, false, false, false)); // Can't Use just exists in the inventory
+    player.add_item(Item("Suspicious Ticking Suitcase", "Potions", 0, 0, 0, false, true, false)); // OTU
+
+
 
         // Create multiple NPCs with different stats, weights, and initial attack values
 

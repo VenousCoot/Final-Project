@@ -39,12 +39,16 @@ class main_character {
         string player_action();
         // Player's actions 
 
+        // Display characters stats
+        void display_all_parameters() const;
+
         // Inventory management functions
         void add_item(const Item& item);
         void remove_item(const string& item_name);
         void display_inventory() const;
-        string use_item();
-        void apply_item(Item item);
+        Item use_item();
+        void apply_item(Item& item);
+        vector <Item> get_inventory();
 };
 
 #endif // CHARACTER_H

@@ -62,9 +62,8 @@ string main_character::player_action(){
         }else if(action == "2") {
             return "block";
         }else if(action == "3"){
-            string cat;
-            cat = use_item();
-            if(cat == "Swords"){
+            Item item = use_item();
+            if(item.damage != 0){
                 return "attack";
             }else{
                 return "item";
@@ -75,7 +74,7 @@ string main_character::player_action(){
         cout << "Choices: Attack (1), Defend (2), Item (3): ";
         getline(cin, action);
     }
-    return 0;
+    return "None";
 }
 
 
@@ -162,17 +161,9 @@ void main_character::remove_item(const string& item_name) {
     for (auto it = inventory.begin(); it != inventory.end(); ++it) {
         if (it->get_name() == item_name) {
             inventory.erase(it);
-            std::cout << main_character::name << item_name << "\" used." << std::endl;
             item_found = true;
             break;
         }
-    }
-
-    if (!item_found) {
-        std::cout << "Item \"" << item_name << "\" not found in inventory. Please try again: ";
-        std::string new_item_name;
-        std::cin >> new_item_name;
-        remove_item(new_item_name); // Recursive call
     }
 }
 
@@ -185,8 +176,19 @@ void main_character::display_inventory() const {
     return;
 }
 
+void main_character::display_all_parameters() const {
+    cout << "Character Name: " << name << endl;
+    cout << "Max HP: " << max_hp << endl;
+    cout << "Current HP: " << hp << endl;
+    cout << "Attack: " << att << endl;
+    cout << "Defense: " << def << endl;
+    cout << "Special Defense: " << sd << endl;
+    cout << "Special Attack: " << sa << endl;
+    cout << "Money: " << money << endl;
+}
+
 // Use item function:
-string main_character::use_item(){
+Item main_character::use_item() {
     string item_name;
     display_inventory();
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
@@ -194,49 +196,56 @@ string main_character::use_item(){
     getline(cin, item_name); 
 
     bool item_found = false;
-    for (auto it = inventory.begin(); it != inventory.end(); ++it) {
-        if (it->get_name() == item_name) {
-            Item item_to_use = *it; // Store the Item object
-            apply_item(item_to_use); // Pass the Item object to apply_item
-            item_found = true;
-            string cat;
-            cat = item_to_use.category;
-            return(cat);
+    while(!item_found){
+        for (auto it = inventory.begin(); it != inventory.end(); ++it) {
+            if (it->get_name() == item_name) {
+                apply_item(*it); // Pass the Item object to apply_item
+                item_found = true;
+                cout << main_character::name << " used " << it->get_name() << "." << endl; // Ensure proper formatting
+                main_character::display_all_parameters();
+                return *it;
+            }
+        }
+
+        if (!item_found) {
+            cout << "Item \"" << item_name << "\" not found in inventory. Please try again: ";
+            getline(cin,item_name);
         }
     }
-
-    if (!item_found) {
-        std::cout << "Item \"" << item_name << "\" not found in inventory. Please try again: ";
-        std::string new_item_name;
-        std::cin >> new_item_name;
-        remove_item(new_item_name); // Recursive call
-    }
-    return "Nothing";
+    return Item("mother","word",0,0,0,false,false,false); // Return a default-constructed Item object
 }
 
 // Apply stats of an item:
-void main_character::apply_item(Item item){
-    if(item.isOTU && item.category != "Potions"){
-        string item_name;
-        if(item.damage != 0){
-            item_name = "att";
-            main_character::update_parameter(item_name, item.damage);
-        }
-        if(item.health != 0){
-            item_name = "hp";
-            main_character::update_parameter(item_name, item.health);
-        }
-        remove_item(item.name);
-    }else{
-        string item_name;
-        if(item.damage != 0){
-            item_name = "att";
-            main_character::update_parameter(item_name, item.damage);
-        }
-        if(item.health != 0){
-            item_name = "hp";
-            main_character::update_parameter(item_name, item.health);
-        }
-        item.isUsed = true;
+void main_character::apply_item(Item& item) {
+    // Update parameters based on item properties
+    if (item.damage != 0) {
+        main_character::update_parameter("att", item.damage);
     }
+    if (item.health != 0 && item.name != "Advil" && item.name != "Shields") {
+        main_character::update_parameter("hp", item.health);
+    }
+    if (item.health != 0 && item.category == "Shields") {
+        main_character::update_parameter("def", item.health);
+    }
+    if (item.name == "Stylish Hat") {
+        cout << "Cannot use this item, HAHAHAHHAHA (Lol you wasted your attack)" << endl;
+        return;
+    }
+    if (item.name == "Advil") {
+        main_character::update_parameter("max_hp", item.health);
+    }
+    if (item.name == "Suspicious Ticking Suitcase") {
+        cout << "Well, it's not a bomb... but you did lose your turn!" << endl;
+    }
+
+    // Handle one-time use items
+    if (item.isOTU) {
+        item.isUsed = true;
+    } else {
+        remove_item(item.name);
+    }
+}
+
+vector <Item> main_character::get_inventory(){
+    return main_character::inventory;
 }

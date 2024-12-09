@@ -3,6 +3,7 @@
 #include <thread>
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 
 void Combat::startCombat(std::unique_ptr<NPC>& npc, main_character& character) {
     while (npc && npc->getHealth() > 0 && character.get_parameter("hp") > 0) {
@@ -30,6 +31,27 @@ void Combat::combatRound(NPC& npc, main_character& character) {
 
     // Resolve actions for both combatants
     resolveActions(npc, character, npcAction, characterAction);
+    vector <Item> inv = character.get_inventory();
+    bool OTU = true;
+        for (auto it = inv.begin(); it != inv.end(); ++it) {
+        if (it->isUsed == true) {
+            string item_name;
+            if(it->damage != 0){
+                item_name = "att";
+                character.update_parameter(item_name, -(it->damage));
+            }
+            if(it->health != 0 && it->name != "Meat Shield"){
+                item_name = "hp";
+                character.update_parameter(item_name, -(it->health));
+            }
+            if(it->name == "Meat Shield"){
+                item_name = "def";
+                character.update_parameter(item_name, -(it->health));
+            }
+            character.remove_item(it->name);
+        }
+    }
+
 }
 
 void Combat::resolveActions(NPC& npc, main_character& character, const std::string& npcAction, const std::string& characterAction) {
@@ -52,8 +74,8 @@ void Combat::resolveActions(NPC& npc, main_character& character, const std::stri
             character.update_parameter("hp", -npc.getAttack());
             printLetterByLetter(npc.getName() + " attacks " + character.get_name() + " for " + std::to_string(npc.getAttack()) + " damage.");
         } else {
-            character.update_parameter("hp", -std::floor(npc.getAttack() / 2));
-            printLetterByLetter(npc.getName() + " attacks " + character.get_name() + " but " + character.get_name() + " blocks, reducing damage to " + std::to_string(std::floor(npc.getAttack() / 2)) + ".");
+            character.update_parameter("hp", -std::floor(npc.getAttack() / character.get_parameter("def")));
+            printLetterByLetter(npc.getName() + " attacks " + character.get_name() + " but " + character.get_name() + " blocks, reducing damage to " + std::to_string(std::floor(npc.getAttack() / character.get_parameter("def"))) + ".");
         }
     } else if (npcAction == "block") {
         printLetterByLetter(npc.getName() + " blocks.");
