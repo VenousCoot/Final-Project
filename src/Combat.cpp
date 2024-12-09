@@ -6,6 +6,7 @@
 #include <algorithm>
 
 void Combat::startCombat(std::unique_ptr<NPC>& npc, main_character& character) {
+    printLetterByLetter(npc->getName() + " Has picked a fight with " + character.get_name() + ".");
     while (npc && npc->getHealth() > 0 && character.get_parameter("hp") > 0) {
         // Perform actions for NPC and main character in parallel threads
         //std::thread thread1(combatRound, std::ref(*npc), std::ref(character));

@@ -22,7 +22,7 @@ main_character player;
 
 // Create objects for all the rooms:
 Lobby lobby;
-// Security security;
+Security security;
 // Terminal terminal;
 // Gate gate;
 // Plane plane;
@@ -51,10 +51,11 @@ int main()
     cout <<"===================================================================" << endl;
 	cout << "DEMO FOR STAGES (LOBBY DEMO)" << endl;
     cout <<"===================================================================" << endl;
-    system("pause");
+    std::cout << "Press Enter to continue...";
+    std::cin.get(); // Waits for the user to press Enter
 
 	lobby.enter();
-	// security.enter();
+
 	// terminal.enter();
     // gate.enter();
     // plane.enter();
@@ -69,7 +70,8 @@ int main()
     // Create multiple NPCs with different stats, weights, and initial attack values
 
     auto Receptionist = make_unique<NPC>("Receptionist", 10, 2, 80, 10, 10, 0, 0);
-    auto TSA_Agent = make_unique<NPC>("TSA Agent", 20, 2, 80, 10, 10, 0, 0);
+
+
 
 
 //        TEST CODE FOR NPC FUNCTIONS
@@ -99,7 +101,8 @@ int main()
     cout <<"===================================================================" << endl;
     cout << "DEMO FOR COMBAT (BETWEEN PLAYER AND RECEPTIONIST)" << endl;
     cout <<"===================================================================" << endl;
-    system("pause");
+    std::cout << "Press Enter to continue...";
+    std::cin.get(); // Waits for the user to press Enter;
     // TEST CODE FOR COMBAT INTERACTIONS
 
     Combat::startCombat(Receptionist, player);
@@ -118,14 +121,16 @@ int main()
     cout <<"===================================================================" << endl;
     cout << "DEMO FOR LOOT DROP " << endl;
     cout <<"===================================================================" << endl;
-    system("pause");
+    std::cout << "Press Enter to continue...";
+    std::cin.get(); // Waits for the user to press Enter;
     LobbyItems(player);
     
 
     cout <<"===================================================================" << endl;
     cout << "DEMO FOR SHOP" << endl;
     cout <<"===================================================================" << endl;
-    system("pause");
+    std::cout << "Press Enter to continue...";
+    std::cin.get(); // Waits for the user to press Enter;
 
     initializeShopItems(shopItems);
     int money;
@@ -135,10 +140,21 @@ int main()
     cout << "\nFinal Player State:" << endl;
     cout << "Currency: $" << player.get_parameter("money") << endl;
 
+    auto TSA_Agent = make_unique<NPC>("TSA Agent", 20, 2, 80, 10, 10, 0, 0);
+
+
+
+    cout <<"===================================================================" << endl;
+    cout << "Security Demo (BETWEEN PLAYER AND TSA AGENT (ALSO USE ITEMS HERE))" << endl;
+    cout <<"===================================================================" << endl;
+
+    security.enter();
+
     cout <<"===================================================================" << endl;
     cout << "DEMO FOR COMBAT (BETWEEN PLAYER AND TSA AGENT (ALSO USE ITEMS HERE))" << endl;
     cout <<"===================================================================" << endl;
-    system("pause");
+    std::cout << "Press Enter to continue...";
+    std::cin.get(); // Waits for the user to press Enter;
 
 
 
@@ -157,7 +173,8 @@ int main()
 
 
 
-    system("pause");
+    std::cout << "Press Enter to continue...";
+    std::cin.get(); // Waits for the user to press Enter;
 
     return 0;
 }
