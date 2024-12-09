@@ -1,5 +1,11 @@
 #include "Items.h"
 #include <iostream>
+#include "character.h"
+#include <string>
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
 
 // Constructor
 Item::Item(std::string itemName, std::string itemCategory, int itemDamage, int itemHealth, int itemCost, bool shopItem, bool OTU, bool used)
@@ -29,7 +35,7 @@ void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& sword
     swords.push_back(Item("Stanley Cup", "Swords", 1, 0, 0, false, false, false)); //Base stat increase
     swords.push_back(Item("TSA Beat-stick", "Swords", 1, 0, 0, false, false, false)); //Base stat increase
     swords.push_back(Item("Stun Gun", "Swords", 2, 0, 0, false, false, false)); //Base stat increase
-    swords.push_back(Item("Dirty Needle", "Swords", 0, 0, 0, false, false, false)); //Automatically Applied
+    swords.push_back(Item("Laptop Bag", "Swords", 2, 0, 0, false, false, false)); //Automatically Applied
     swords.push_back(Item("TSA Service Weapon", "Swords", 12, 0, 0, false, true, false)); //OTU
 
     // Potions
@@ -43,10 +49,10 @@ void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& sword
 
 // Initialize shop items
 void initializeShopItems(std::vector<Item>& shopItems) {
-    shopItems.push_back(Item("Dirty Needle", "Swords", 0, 0, 70, true, false, false));
+    shopItems.push_back(Item("Laptop Bag", "Swords", 2, 0, 0, false, false, false));
     shopItems.push_back(Item("Meat Shield", "Shields", 0, 5, 60, true, true, false));
     shopItems.push_back(Item("Shake Shack", "Potions", 0, 6, 20, true, true, false));
-    shopItems.push_back(Item("Boarding Pass", "Special", 0, 0, 140, true, false, false));
+    shopItems.push_back(Item("First Class Boarding Pass", "Special", 0, 0, 140, true, false, false));
 }
 
 // Display grouped items
@@ -59,7 +65,7 @@ void displayGroupedItems(const std::string& category, const std::vector<Item>& i
 }
 
 // Purchase items from the shop
-void purchaseItem(std::vector<Item>& shopItems, int& playerCurrency, int& playerDamageReduction) {
+int purchaseItem(std::vector<Item>& shopItems, int playerCurrency, main_character& player) {
     std::cout << "Your Currency: $" << playerCurrency << std::endl;
     for (size_t i = 0; i < shopItems.size(); ++i) {
         std::cout << i + 1 << ". ";
@@ -69,26 +75,43 @@ void purchaseItem(std::vector<Item>& shopItems, int& playerCurrency, int& player
     int choice;
     std::cout << "Choose an item to buy (1-" << shopItems.size() << "): ";
     std::cin >> choice;
+    bool valid_option = false;
+    while(!valid_option){
+        if (choice >= 1 && choice <= shopItems.size()) {
+            Item& selectedItem = shopItems[choice - 1];
+                playerCurrency -= selectedItem.cost;
+                std::cout << "You bought: " << selectedItem.name << " for $" << selectedItem.cost << std::endl;
+                std::cout << "Remaining Currency: $" << playerCurrency << std::endl;
+                valid_option = true;
 
-    if (choice >= 1 && choice <= shopItems.size()) {
-        Item& selectedItem = shopItems[choice - 1];
-        if (playerCurrency >= selectedItem.cost) {
-            playerCurrency -= selectedItem.cost;
-            std::cout << "You bought: " << selectedItem.name << " for $" << selectedItem.cost << std::endl;
-            std::cout << "Remaining Currency: $" << playerCurrency << std::endl;
-
-            // Apply damage reduction effects for special items
             if (selectedItem.name == "Security Vest") {
-                playerDamageReduction = -2;
-                std::cout << "Equipped Security Vest: Damage reduced to -2!" << std::endl;
-            } else if (selectedItem.name == "Meat Suit") {
-                playerDamageReduction = -4;
-                std::cout << "Equipped Meat Suit: Damage reduced to -4!" << std::endl;
+                std::cout << "Equipped Security Vest: DEF stat increaded by 2!" << std::endl;
+                for (Item& item : shopItems) {
+                    if (item.name == selectedItem.name) {
+                        player.apply_item(item);
+                        break;
+                    }
+                }
+            } else if (selectedItem.name == "Meat Shield") {
+                std::cout << "Equipped Meat Suit: DEF stat increaded by 4!" << std::endl;
+                for (Item& item : shopItems) {
+                    if (item.name == selectedItem.name) {
+                        player.apply_item(item);
+                        break;
+                    }
+                }
+            } else {
+                for (const auto& item : shopItems) {
+                    if (item.name == selectedItem.name) {
+                        player.add_item(item);
+                        break;
+                    }
+                }
             }
         } else {
-            std::cout << "Not enough currency to buy this item!" << std::endl;
+            std::cout << "Invalid choice!" << std::endl;
+            valid_option = false;
         }
-    } else {
-        std::cout << "Invalid choice!" << std::endl;
     }
+    return playerCurrency;
 }

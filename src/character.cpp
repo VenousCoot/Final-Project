@@ -218,6 +218,20 @@ Item main_character::use_item() {
 // Apply stats of an item:
 void main_character::apply_item(Item& item) {
     // Update parameters based on item properties
+    if (item.name == "First Class Boarding Pass"){
+        cout << "It's a boarding pass...." << endl;
+        return;
+    }
+    if (item.name == "Stylish Hat") {
+        cout << "Omnipresent voice: Cool hat huh???? RIGHT??? " << endl;
+        return;
+    }
+    if (item.name == "Advil") {
+        main_character::update_parameter("max_hp", item.health);
+    }
+    if (item.name == "Suspicious Ticking Suitcase") {
+        cout << "Well, it's not a bomb... but you did lose your turn!" << endl;
+    }
     if (item.damage != 0) {
         main_character::update_parameter("att", item.damage);
     }
@@ -226,16 +240,6 @@ void main_character::apply_item(Item& item) {
     }
     if (item.health != 0 && item.category == "Shields") {
         main_character::update_parameter("def", item.health);
-    }
-    if (item.name == "Stylish Hat") {
-        cout << "Cannot use this item, HAHAHAHHAHA (Lol you wasted your attack)" << endl;
-        return;
-    }
-    if (item.name == "Advil") {
-        main_character::update_parameter("max_hp", item.health);
-    }
-    if (item.name == "Suspicious Ticking Suitcase") {
-        cout << "Well, it's not a bomb... but you did lose your turn!" << endl;
     }
 
     // Handle one-time use items

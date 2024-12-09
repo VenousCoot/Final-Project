@@ -7,6 +7,8 @@
 
 using namespace std;
 
+
+
 class main_character {
     private:
         string name;
@@ -16,7 +18,7 @@ class main_character {
         int def = 0;
         int sd = 0;
         int sa = 0;
-        int money = 3;
+        int money = 150;
         vector <Item> inventory;
     public:
         // Constructor

@@ -10,64 +10,66 @@
 #include <memory>
 #include "character.h"
 #include <iostream>
+#include "ItemChoice.h"
 
 using namespace std;
 
 // Debug mode if = 1 then will print debugging messages example being object destroying messages
 int Debug = 0;
 
+// Create the object "Player"
+main_character player;
+
+// Create objects for all the rooms:
+Lobby lobby;
+// Security security;
+// Terminal terminal;
+// Gate gate;
+// Plane plane;
+
+// Initialize items for shop demo:
+vector<Item> shields;
+vector<Item> swords;
+vector<Item> potions;
+vector<Item> shopItems;
+
 int main()
 {
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INTRODUCTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    cout <<"==================================================================="<< endl;
 	cout <<"Welcome to Hell Adventurer, this is Newark Liberty International Airport!" << endl;
 	cout <<"Voted the worst airport in the United States according to AirHelp's Global Airport Ranking (2019)." << endl;
 	cout <<"It looks like you have a flight departing in ... 1 hour!! Better Hurry!" << endl;
+    cout <<"===================================================================" << endl;
     // int playerCurrency = 150;          // Starting currency for the player
     int playerDamageReduction = 0;  // Default damage reduction
 
-	Lobby lobby;
+    player.pick_player_name();
+    cout <<"===================================================================" << endl;
+    cout <<"Stats:" << endl;
+    player.display_all_parameters();
+    cout <<"===================================================================" << endl;
+	cout << "DEMO FOR STAGES (LOBBY DEMO)" << endl;
+    cout <<"===================================================================" << endl;
+    system("pause");
+
 	lobby.enter();
-
-	Security security;
-	security.enter();
-
-	Terminal terminal;
-	terminal.enter();
-
-
+	// security.enter();
+	// terminal.enter();
+    // gate.enter();
+    // plane.enter();
 
     // Seed the random number geerator
-        srand(static_cast<unsigned>(time(0)));
-
-
-//        Character Creation
-    main_character player;
-    player.pick_player_name();
-
-    player.add_item(Item("Money", "Shields", 0, 3, 0, false, false, false)); // Base stat increase
-    player.add_item(Item("Security Vest", "Shields", 0, 2, 0, false, false, false)); // Base stat increase
-    player.add_item(Item("Meat Shield", "Shields", 0, 5, 0, false, true, false)); // One time use
-
-    player.add_item(Item("Stanley Cup", "Swords", 1, 0, 0, false, false, false)); // Base stat increase
-    player.add_item(Item("TSA Beat-stick", "Swords", 1, 0, 0, false, false, false)); // Base stat increase
-    player.add_item(Item("Stun Gun", "Swords", 2, 0, 0, false, false, false)); // Base stat increase
-    player.add_item(Item("Dirty Needle", "Swords", 0, 0, 0, false, false, false)); // Automatically Applied
-    player.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false, true, false)); // OTU
-
-    player.add_item(Item("Advil", "Shields", 0, 1, 0, false, false, false)); // Increases MAXIMUM HEALTH by 1
-    player.add_item(Item("Half a Bottle of Whiskey", "Potions", 3, 0, 0, false, true, false)); // OTU
-    player.add_item(Item("Slightly Browned Banana", "Potions", 0, 3, 0, false, true, false)); // OTU
-    player.add_item(Item("Shake Shack", "Potions", 0, 6, 0, false, true, false)); // OTU
-    player.add_item(Item("Stylish Hat", "Potions", 0, 0, 0, false, false, false)); // Can't Use just exists in the inventory
-    player.add_item(Item("Suspicious Ticking Suitcase", "Potions", 0, 0, 0, false, true, false)); // OTU
+    srand(static_cast<unsigned>(time(0)));
 
 
 
-        // Create multiple NPCs with different stats, weights, and initial attack values
+
+
+    // Create multiple NPCs with different stats, weights, and initial attack values
 
     auto Receptionist = make_unique<NPC>("Receptionist", 10, 2, 80, 10, 10, 0, 0);
     auto TSA_Agent = make_unique<NPC>("TSA Agent", 20, 2, 80, 10, 10, 0, 0);
-
-
 
 
 //        TEST CODE FOR NPC FUNCTIONS
@@ -94,7 +96,11 @@ int main()
 //        std::cout << Receptionest.getName() << " now has " << Receptionest.getAttack() << " attack.\n";
 
 
-// TEST CODE FOR COMBAT INTERACTIONS
+    cout <<"===================================================================" << endl;
+    cout << "DEMO FOR COMBAT (BETWEEN PLAYER AND RECEPTIONIST)" << endl;
+    cout <<"===================================================================" << endl;
+    system("pause");
+    // TEST CODE FOR COMBAT INTERACTIONS
 
     Combat::startCombat(Receptionist, player);
 
@@ -109,6 +115,30 @@ int main()
             << endl;
     }
 
+    cout <<"===================================================================" << endl;
+    cout << "DEMO FOR LOOT DROP " << endl;
+    cout <<"===================================================================" << endl;
+    system("pause");
+    LobbyItems(player);
+    
+
+    cout <<"===================================================================" << endl;
+    cout << "DEMO FOR SHOP" << endl;
+    cout <<"===================================================================" << endl;
+    system("pause");
+
+    initializeShopItems(shopItems);
+    int money;
+    money = purchaseItem(shopItems, player.get_parameter("money"), player);
+    player.set_parameter("money",money);
+
+    cout << "\nFinal Player State:" << endl;
+    cout << "Currency: $" << player.get_parameter("money") << endl;
+
+    cout <<"===================================================================" << endl;
+    cout << "DEMO FOR COMBAT (BETWEEN PLAYER AND TSA AGENT (ALSO USE ITEMS HERE))" << endl;
+    cout <<"===================================================================" << endl;
+    system("pause");
 
 
 
@@ -124,5 +154,10 @@ int main()
         cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining."
             << endl;
     }
+
+
+
+    system("pause");
+
     return 0;
 }

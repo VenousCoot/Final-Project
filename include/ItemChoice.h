@@ -3,11 +3,11 @@
 #include "character.h"
 
 
-void LobbyItems(const main_character& mc);
+void LobbyItems(main_character& mc);
 
-void SecurityItems(const main_character& mc);
+void SecurityItems(main_character& mc);
 
-void TerminalItems(const main_character& mc);
+void TerminalItems(main_character& mc);
 
-void GateItems(const main_character& mc);
+void GateItems(main_character& mc);
 #endif

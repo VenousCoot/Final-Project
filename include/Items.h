@@ -4,6 +4,9 @@
 #include <string>
 #include <vector>
 
+
+class main_character; // Forward declaration to get around circular dependancy
+
 class Item {
 public:
     std::string name;
@@ -25,7 +28,7 @@ public:
 void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& swords, std::vector<Item>& potions);
 void initializeShopItems(std::vector<Item>& shopItems);
 void displayGroupedItems(const std::string& category, const std::vector<Item>& items);
-void purchaseItem(std::vector<Item>& shopItems, int& playerCurrency, int& playerDamageReduction);
+int purchaseItem(std::vector<Item>& shopItems, int playerCurrency, main_character& player);
 void DisplayDroppedItems();
 
 #endif // ITEMS_H
