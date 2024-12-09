@@ -21,17 +21,17 @@ void LobbyItems(main_character& mc) {
 		getline(cin, playerInput);
 
 		if (playerInput == "1") {
-			mc.add_item(Item("Stanley Cup", "Swords", 1, 0, 0, false));
+			mc.add_item(Item("Stanley Cup", "Swords", 1, 0, 0, false, false, false));
 			cout << "Added Stanley Cup!" << endl;
 			return;
 		}
 		else if (playerInput == "2") {
-			mc.add_item(Item("Advil", "Shields", 0, 1, 0, false));
+			mc.add_item(Item("Advil", "Shields", 0, 1, 0, false, false, false));
 			cout << "Added Advil!" << endl;
 			return;
 		}
 		else if (playerInput == "3") {
-			mc.add_item(Item("Slightly Browned Banana", "Potions", 0, 3, 0, false));
+			mc.add_item(Item("Slightly Browned Banana", "Potions", 0, 3, 0, false, true, false));
 			cout << "Added Slightly Browned Banana!" << endl;
 			return;
 		}
@@ -63,22 +63,22 @@ void SecurityItems(main_character& mc) {
 		getline(cin, playerInput);
 
 		if (playerInput == "1") {
-			mc.add_item(Item("TSA Beat-stick", "Swords", 1, 0, 0, false));
+			mc.add_item(Item("TSA Beat-stick", "Swords", 1, 0, 0, false, false, false));
 			cout << "Added TSA Beat-stick!" << endl;
 			return;
 		}
 		else if (playerInput == "2") {
-			mc.add_item(Item("Half a Bottle of Whiskey", "Potions", 2, 0, 0, false));
+			mc.add_item(Item("Half a Bottle of Whiskey", "Potions", 2, 0, 0, false, true, false));
 			cout << "Added Half a Bottle of Whiskey!" << endl;
 			return;
 		}
 		else if (playerInput == "3") {
-			mc.add_item(Item("Stylish Hat", "Potions", 0, 0, 0, false));
+			mc.add_item(Item("Stylish Hat", "Potions", 0, 0, 0, false, false, false));
 			cout << "Added Stylish Hat!" << endl;
 			return;
 		}
 		else if (playerInput == "4") {
-			mc.add_item(Item("Suspicious Ticking Suitcase", "Potions", 0, 0, 0, false));
+			mc.add_item(Item("Suspicious Ticking Suitcase", "Potions", 0, 0, 0, false, true, false));
 			cout << "Added Suspicious Ticking Suitcase!" << endl;
 			return;
 		}

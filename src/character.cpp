@@ -62,8 +62,13 @@ string main_character::player_action(){
         }else if(action == "2") {
             return "block";
         }else if(action == "3"){
-            display_inventory();
-            return "item";
+            string cat;
+            cat = use_item();
+            if(cat == "Swords"){
+                return "attack";
+            }else{
+                return "item";
+            }
         }else{
             cout << "Okay wise guy, how about you enter something valid here 0_0" << endl;
         }
@@ -177,15 +182,16 @@ void main_character::display_inventory() const {
     for (const auto& item : inventory) {
         item.display();
     }
+    return;
 }
 
 // Use item function:
-void main_character::use_item(){
+string main_character::use_item(){
     string item_name;
     display_inventory();
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "Input the name of the item you want to use" << endl;
-    cin >> item_name;
+    getline(cin, item_name); 
 
     bool item_found = false;
     for (auto it = inventory.begin(); it != inventory.end(); ++it) {
@@ -193,7 +199,9 @@ void main_character::use_item(){
             Item item_to_use = *it; // Store the Item object
             apply_item(item_to_use); // Pass the Item object to apply_item
             item_found = true;
-            break;
+            string cat;
+            cat = item_to_use.category;
+            return(cat);
         }
     }
 
@@ -203,7 +211,7 @@ void main_character::use_item(){
         std::cin >> new_item_name;
         remove_item(new_item_name); // Recursive call
     }
-
+    return "Nothing";
 }
 
 // Apply stats of an item:

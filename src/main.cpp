@@ -22,10 +22,6 @@ int main()
         // int playerCurrency = 150;          // Starting currency for the player
         int playerDamageReduction = 0;  // Default damage reduction
 
-        // Initialize items
-        // initializeGroupedItems(shields, swords, potions);
-        // initializeShopItems(shopItems);
-
 
 
 
@@ -38,6 +34,9 @@ int main()
 //        Character Creation
     main_character player;
     player.pick_player_name();
+
+    player.add_item(Item("Sword", "Swords", 5,5,0,false,false,false));
+    
 
         // Create multiple NPCs with different stats, weights, and initial attack values
 

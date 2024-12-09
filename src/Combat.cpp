@@ -7,10 +7,10 @@
 void Combat::startCombat(std::unique_ptr<NPC>& npc, main_character& character) {
     while (npc && npc->getHealth() > 0 && character.get_parameter("hp") > 0) {
         // Perform actions for NPC and main character in parallel threads
-        std::thread thread1(combatRound, std::ref(*npc), std::ref(character));
-
+        //std::thread thread1(combatRound, std::ref(*npc), std::ref(character));
+        combatRound(std::ref(*npc), std::ref(character));
         // Wait for the combat round to finish
-        thread1.join();
+        //thread1.join();
     }
 
     // Check if NPC has zero health to destroy them immediately
