@@ -249,7 +249,7 @@ void main_character::apply_item(Item& item) {
     if (item.name == "Suspicious Ticking Suitcase") {
         cout << "Well, it's not a bomb... but you did lose your turn!" << endl;
     }
-    if (item.name == "Meat Shield"){
+    if (item.name == "Meat Shield" && item.isUsed == true){
         cout << "You pull a grandma in front of you to take the hit.... She dies" << endl;
         cout << "Omnipresent voice: Wow you're a piece of shit" << endl;
     }
