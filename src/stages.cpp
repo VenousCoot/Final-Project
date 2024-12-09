@@ -1,4 +1,5 @@
 #include "Room.h"
+#include "Utility.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -13,8 +14,8 @@ Lobby::Lobby() {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOBBY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 void Lobby::enter() {
-    cout << description << endl;
-    cout << npcName << ": Welcome to Newark Airport! May I see your boarding pass?" << endl;
+    printLetterByLetter ( description );
+    printLetterByLetter( npcName + ": Welcome to Newark Airport! May I see your boarding pass?" );
 
     string playerInput;
     bool validInput = false;
@@ -26,7 +27,7 @@ void Lobby::enter() {
         getline(cin, playerInput);
 
         if (playerInput == "1") {
-            cout << npcName << ": Hmm ...  this sure doesn`t seem like it`s yours. Got any ID?" << endl;
+            printLetterByLetter ( npcName + ": Hmm ...  this sure doesn`t seem like it`s yours. Got any ID?" );
 
             validInput = false;
             while (!validInput) {
@@ -36,21 +37,21 @@ void Lobby::enter() {
                 getline(cin, playerInput);
 
                 if (playerInput == "1") {
-                    cout << npcName << ": Alright kid, I'm gonna have to show you the exit." << endl;
+                    printLetterByLetter ( npcName + ": Alright kid, I'm gonna have to show you the exit." );
                     return;
                 }
                 else if (playerInput == "2") {
-                    cout << npcName << ": DON'T YOU DARE TALK TO ME THAT WAY" << endl;
+                    printLetterByLetter ( npcName + ": DON'T YOU DARE TALK TO ME THAT WAY" );
                     return;
                 }
                 else {
-                    cout << npcName << ": I'm sorry, were you trying to say something?" << endl;
-                    cout << "Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2." << endl;
+                    printLetterByLetter( npcName + ": I'm sorry, were you trying to say something?" );
+                    printLetterByLetter( "Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2." );
                 }
             }
         }
         else if (playerInput == "2") {
-            cout << npcName << ": Listen here bub, if you don't have a boarding pass get the hell out of my line." << endl;
+            printLetterByLetter ( npcName + ": Listen here bub, if you don't have a boarding pass get the hell out of my line." );
 
             validInput = false;
             while (!validInput) {
@@ -60,21 +61,22 @@ void Lobby::enter() {
                 getline(cin, playerInput);
 
                 if (playerInput == "1") {
-                    cout << npcName << ": That's it I'm gonna kick your ass!" << endl;
+                    printLetterByLetter ( npcName + ": That's it I'm gonna kick your ass!" );
                     return;
                 }
                 else if (playerInput == "2") {
+                    printLetterByLetter("*Swing at the Receptionist*");
                     return;
                 }
                 else {
-                    cout << npcName << ": I'm sorry, were you trying to say something?" << endl;
-                    cout << "Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2." << endl;
+                    printLetterByLetter(npcName + ": I'm sorry, were you trying to say something?");
+                    printLetterByLetter("Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2.");
                 }
             }
         }
         else {
-            cout << npcName << ": I'm sorry, were you trying to say something?" << endl;
-            cout << "Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2." << endl;
+            printLetterByLetter(npcName + ": I'm sorry, were you trying to say something?");
+            printLetterByLetter("Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2.");
         }
     }
 }
@@ -87,9 +89,9 @@ Security::Security() {
 }
 
 void Security::enter() {
-	cout << description << endl;
-	cout << "Anyways this is the security check. Be careful the TSA here can be touchy!" << endl;
-	cout << npcName << ": Single file line, shoes off. Hey you, get back in line! *points at you*" << endl;
+	printLetterByLetter( description );
+	printLetterByLetter( "Anyways this is the security check. Be careful the TSA here can be touchy!" );
+	printLetterByLetter( npcName + ": Single file line, shoes off. Hey you, get back in line! *points at you*");
 
 
 
@@ -103,16 +105,16 @@ void Security::enter() {
 		getline(cin, playerInput);
 
 		if (playerInput == "1") {
-			cout << npcName << ": Oh are you giving me lip?" << endl;
+            printLetterByLetter(npcName + ": Oh are you giving me lip?" );
 			return;
 		}
 		else if (playerInput == "2") {
-			cout << npcName << ": You don't know how long I've been waiting for this." << endl;
+            printLetterByLetter(npcName + ": You don't know how long I've been waiting for this." );
 			return;
 		}
 		else {
-			cout << npcName << ": I'm sorry, were you trying to say something?" << endl;
-			cout << "Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2." << endl;
+            printLetterByLetter(npcName + ": I'm sorry, were you trying to say something?");
+            printLetterByLetter("Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2.");
 		}
 	}
 }
@@ -121,14 +123,14 @@ void Security::enter() {
 
 Terminal::Terminal() {
 	description = "Omnipresent Voice: Ok that guy was kinda a dick, but isn't it weird that you have run into 2 people and have gotten into 2 fights? Must be some kind of common denominator here.";
-	npcName1 = "Simone Mueller";
+	npcName1 = "Annoyed Man";
 	npcName2 = "Shopkeep";
 }
 
 void Terminal::enter() {
-	cout << description << endl;
-	cout << "Moving past your violent tendencies. This is terminal A, Newark's brand new terminal! It has 33 gates and over a dozen unique restaurants!" << endl;
-	cout << "Not that it matters to you since you're probably just going to go get into a fight someone else, but I thought that I should at least let you know." << endl;
+	printLetterByLetter( description );
+    printLetterByLetter( "Moving past your violent tendencies. This is terminal A, Newark's brand new terminal! It has 33 gates and over a dozen unique restaurants!");
+	printLetterByLetter(  "Not that it matters to you since you're probably just going to go get into a fight someone else, but I thought that I should at least let you know.");
 
 	string playerInput;
 	bool validInput = false;
@@ -140,9 +142,9 @@ void Terminal::enter() {
 		getline(cin, playerInput);
 
 		if (playerInput == "1") {
-			cout << "Omnipresent Voice: Wow, I wonder how long this non-violent streak of yours will last." << endl;
-			cout << npcName2 << ": Welcome to the newest addition to Terminal A, Hudson Non-stop!" << endl;
-			cout << "This is our fully self-checkout convenience store! Just grab what you need, and it is immediately pulled from your emergency savings account!" << endl;
+			printLetterByLetter("Omnipresent Voice: Wow, I wonder how long this non-violent streak of yours will last.");
+			printLetterByLetter( npcName2 + ": Welcome to the newest addition to Terminal A, Hudson Non-stop!");
+            printLetterByLetter("This is our fully self-checkout convenience store! Just grab what you need, and it is immediately pulled from your emergency savings account!");
 			
 			validInput = false;
 			while (!validInput) {
@@ -151,24 +153,26 @@ void Terminal::enter() {
 				cout << "2. If it's fully self-checkout why are you here?" << endl;
 				getline(cin, playerInput);
 				if (playerInput == "1") {
-					cout << npcName2 << ": Please have a look at what's in stock!" << endl;
+                    printLetterByLetter(npcName2 + ": Please have a look at what's in stock!" );
+                    return;
                     // Bring to shop					
 				}
 				else if (playerInput == "2"){
-					cout << npcName2 << ": To keep assholes like you out." << endl;
+                    printLetterByLetter(npcName2 + ": To keep assholes like you out.");
+                    return;
 					// Bring you to combat
 				}
 				else {
-					cout << npcName2 << ": I'm sorry, were you trying to say something?" << endl;
-					cout << "Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2." << endl;
+                    printLetterByLetter(npcName2 + ": I'm sorry, were you trying to say something?");
+					printLetterByLetter( "Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2.");
 				}
 			}
 			
 
 		}
 		else if (playerInput == "2") {
-			cout << "Omnipresent Voice: What a shocker you picked to look for a fight. I don't really know why I expected anything different from you." << endl;
-			cout << npcName1 << ": HEY YOU!! My flight just got delayed 4 hours and you have the perfect face for punching!" << endl;
+			printLetterByLetter( "Omnipresent Voice: What a shocker you picked to look for a fight. I don't really know why I expected anything different from you.");
+            printLetterByLetter(npcName1 + ": HEY YOU!! My flight just got delayed 4 hours and you have the perfect face for punching!");
 
 			validInput = false;
 			while (!validInput) {
@@ -188,8 +192,8 @@ void Terminal::enter() {
 					return;
 				}
 				else {
-					cout << npcName1 << ": WHAT DID YOU SAY TO ME!?!?!" << endl;
-					cout << "Omnipresent Voice: For the first time you have 3 whole choices to make and you still choose to press a random button. I'm seriously starting to get worried for you." << endl;
+                    printLetterByLetter(npcName1 + ": WHAT DID YOU SAY TO ME!?!?!" );
+					printLetterByLetter( "Omnipresent Voice: For the first time you have 3 whole choices to make and you still choose to press a random button. I'm seriously starting to get worried for you." );
 
 				}
 			}
