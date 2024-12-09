@@ -50,25 +50,31 @@ void main_character::pick_player_name(){
 
 
 // Players action choises:
-string main_character::player_action(){
+string main_character::player_action() {
     bool verify = false;
     string action;
     cout << "What would you like to do? (Enter the number associated with the action)" << endl;
     cout << "Choices: Attack (1), Defend (2), Item (3): ";
     getline(cin, action);
-    while (!verify){
-        if(action == "1"){
+
+    while (!verify) {
+        if (action == "1") {
             return "attack";
-        }else if(action == "2") {
+        } else if (action == "2") {
             return "block";
-        }else if(action == "3"){
+        } else if (action == "3") {
             Item item = use_item();
-            if(item.damage != 0){
+            if (item.name == "none") {
+                // If no item was used, loop back to the options
+                cout << "Choices: Attack (1), Defend (2), Item (3): ";
+                getline(cin, action);
+                continue;
+            } else if (item.damage != 0) {
                 return "attack";
-            }else{
+            } else {
                 return "item";
             }
-        }else{
+        } else {
             cout << "Okay wise guy, how about you enter something valid here 0_0" << endl;
         }
         cout << "Choices: Attack (1), Defend (2), Item (3): ";
@@ -189,30 +195,41 @@ void main_character::display_all_parameters() const {
 
 // Use item function:
 Item main_character::use_item() {
-    string item_name;
+    if (inventory.empty()) {
+        std::cout << "You have no items." << std::endl;
+        return Item("none", "none", 0, 0, 0, false, false, false); // Return a default-constructed Item object
+    }
+
+    std::string item_name;
     display_inventory();
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "Input the name of the item you want to use" << endl;
-    getline(cin, item_name); 
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    std::cout << "Input the name of the item you want to use or type 'back' to go back: ";
+    getline(std::cin, item_name);
 
     bool item_found = false;
-    while(!item_found){
+    while (!item_found) {
+        if (item_name == "back") {
+            std::cout << "Returning to previous menu." << std::endl;
+            return Item("none", "none", 0, 0, 0, false, false, false); // Return a default-constructed Item object
+        }
+
         for (auto it = inventory.begin(); it != inventory.end(); ++it) {
             if (it->get_name() == item_name) {
                 apply_item(*it); // Pass the Item object to apply_item
                 item_found = true;
-                cout << main_character::name << " used " << it->get_name() << "." << endl; // Ensure proper formatting
+                std::cout << main_character::name << " used " << it->get_name() << "." << std::endl; // Ensure proper formatting
                 main_character::display_all_parameters();
                 return *it;
             }
         }
 
         if (!item_found) {
-            cout << "Item \"" << item_name << "\" not found in inventory. Please try again: ";
-            getline(cin,item_name);
+            std::cout << "Item \"" << item_name << "\" not found in inventory. Please try again or type 'back' to go back: ";
+            getline(std::cin, item_name);
         }
     }
-    return Item("mother","word",0,0,0,false,false,false); // Return a default-constructed Item object
+
+    return Item("none", "none", 0, 0, 0, false, false, false); // Return a default-constructed Item object
 }
 
 // Apply stats of an item:
@@ -231,6 +248,10 @@ void main_character::apply_item(Item& item) {
     }
     if (item.name == "Suspicious Ticking Suitcase") {
         cout << "Well, it's not a bomb... but you did lose your turn!" << endl;
+    }
+    if (item.name == "Meat Shield"){
+        cout << "You pull a grandma in front of you to take the hit.... She dies" << endl;
+        cout << "Omnipresent voice: Wow you're a piece of shit" << endl;
     }
     if (item.damage != 0) {
         main_character::update_parameter("att", item.damage);

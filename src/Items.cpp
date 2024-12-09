@@ -49,69 +49,72 @@ void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& sword
 
 // Initialize shop items
 void initializeShopItems(std::vector<Item>& shopItems) {
-    shopItems.push_back(Item("Laptop Bag", "Swords", 2, 0, 0, false, false, false));
+    shopItems.push_back(Item("Laptop Bag", "Swords", 2, 0, 60, false, false, false));
     shopItems.push_back(Item("Meat Shield", "Shields", 0, 5, 60, true, true, false));
     shopItems.push_back(Item("Shake Shack", "Potions", 0, 6, 20, true, true, false));
     shopItems.push_back(Item("First Class Boarding Pass", "Special", 0, 0, 140, true, false, false));
 }
 
 // Display grouped items
-void displayGroupedItems(const std::string& category, const std::vector<Item>& items) {
-    std::cout << "=== " << category << " ===" << std::endl;
-    for (const auto& item : items) {
-        item.display();
-    }
-    std::cout << std::endl;
-}
-
-// Purchase items from the shop
 int purchaseItem(std::vector<Item>& shopItems, int playerCurrency, main_character& player) {
     std::cout << "Your Currency: $" << playerCurrency << std::endl;
-    for (size_t i = 0; i < shopItems.size(); ++i) {
-        std::cout << i + 1 << ". ";
-        shopItems[i].display();
-    }
 
-    int choice;
-    std::cout << "Choose an item to buy (1-" << shopItems.size() << "): ";
-    std::cin >> choice;
-    bool valid_option = false;
-    while(!valid_option){
-        if (choice >= 1 && choice <= shopItems.size()) {
-            Item& selectedItem = shopItems[choice - 1];
+    while (true) {
+        for (size_t i = 0; i < shopItems.size(); ++i) {
+            std::cout << i + 1 << ". ";
+            shopItems[i].display();
+        }
+
+        std::string choice;
+        std::cout << "Choose an item to buy (1-" << shopItems.size() << ") or press (5) to exit the shop without buying anything: ";
+        std::cin >> choice;
+
+        if (choice == "5") {
+            std::cout << "ShopKeep: Thank you for coming!!" << std::endl;
+            break;
+        }
+
+        int itemIndex = std::stoi(choice) - 1;
+        if (itemIndex >= 0 && itemIndex < shopItems.size()) {
+            Item& selectedItem = shopItems[itemIndex];
+            if (playerCurrency >= selectedItem.cost) {
                 playerCurrency -= selectedItem.cost;
                 std::cout << "You bought: " << selectedItem.name << " for $" << selectedItem.cost << std::endl;
                 std::cout << "Remaining Currency: $" << playerCurrency << std::endl;
-                valid_option = true;
 
-            if (selectedItem.name == "Security Vest") {
-                std::cout << "Equipped Security Vest: DEF stat increaded by 2!" << std::endl;
-                for (Item& item : shopItems) {
-                    if (item.name == selectedItem.name) {
-                        player.apply_item(item);
-                        break;
-                    }
+                if (selectedItem.name == "Security Vest") {
+                    std::cout << "Equipped Security Vest: DEF stat increased by 2!" << std::endl;
+                    player.apply_item(selectedItem);
+                } else if (selectedItem.name == "Meat Shield") {
+                    std::cout << "Equipped Meat Suit: DEF stat increased by 4!" << std::endl;
+                    player.apply_item(selectedItem);
+                } else {
+                    player.add_item(selectedItem);
                 }
-            } else if (selectedItem.name == "Meat Shield") {
-                std::cout << "Equipped Meat Suit: DEF stat increaded by 4!" << std::endl;
-                for (Item& item : shopItems) {
-                    if (item.name == selectedItem.name) {
-                        player.apply_item(item);
-                        break;
-                    }
-                }
+
+                // Remove the purchased item from the shop
+                shopItems.erase(shopItems.begin() + itemIndex);
             } else {
-                for (const auto& item : shopItems) {
-                    if (item.name == selectedItem.name) {
-                        player.add_item(item);
-                        break;
-                    }
-                }
+                std::cout << "Not enough currency to buy this item." << std::endl;
             }
         } else {
             std::cout << "Invalid choice!" << std::endl;
-            valid_option = false;
+        }
+
+        if (shopItems.empty()) {
+            std::cout << "ShopKeep: All items sold out! Have a nice day!" << std::endl;
+            break;
+        }
+
+        std::cout << "Would you like to buy another item? (1 for yes, 2 for no): ";
+        std::cin >> choice;
+        if (choice == "2") {
+            std::cout << "ShopKeep: Have a nice day!" << std::endl;
+            break;
         }
     }
+
     return playerCurrency;
 }
+
+

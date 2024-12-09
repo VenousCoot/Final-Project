@@ -15,7 +15,7 @@ class main_character {
         int max_hp = 20;
         int hp = 20;
         int att = 5;
-        int def = 0;
+        int def = 2;
         int sd = 0;
         int sa = 0;
         int money = 150;
