@@ -83,7 +83,7 @@ void SecurityItems(main_character& mc) {
 			return;
 		}
 		else {
-			cout << "Just pick a number between 1 and 4" << endl;
+			cout << "Omnipresent Voice: Just pick a number between 1 and 4" << endl;
 
 		}
 	}
@@ -100,6 +100,79 @@ void TerminalItems(main_character& mc) {
 	cout << "Rummage Through this guys stuff:" << endl;
 
 	string playerInput;
+	bool validInput = false;
 
+	while (!validInput) {
+		cout << "1. Laptop Bag - Gives you +2 Base Damage! I bet he has a ThinkPad!" << endl;
+		cout << "2. Meat Shield - Have your new friend take 1 hit for you!" << endl;
+		cout << "3. Shake Shack - Heal 6 Health!" << endl;
+		getline(cin, playerInput);
 
+		if (playerInput == "1") {
+			mc.add_item(Item("Laptop Bag", "Swords", 2, 0, 0, false));
+			cout << "Added Laptop Bag!" << endl;
+			return;
+		}
+		else if (playerInput == "2") {
+			mc.add_item(Item("Meat Shield", "Shields", 0, 5, 0, false));
+			cout << "Added Meat Shield!" << endl;
+			return;
+		}
+		else if (playerInput == "3") {
+			mc.add_item(Item("Shake Shack", "Potions", 0, 6, 0, false));
+		}
+		else {
+			cout << "Omnipresent Voice: I really wish I could give you no items, but that's not how this works." << endl;
+
+		}
+	}
+
+}
+
+void GateItems(main_character& mc) {
+
+	cout << "Flight Attendant: You will never defeat The Captain!" << endl;
+	cout << "Omnipresent Voice: Well, what are you waiting for? This is no time for you to finally grow some morals. Steal her stuff like you always do." << endl;
+	cout << "Rob the Flight Attendant:" << endl;
+
+	string playerInput;
+	bool validInput = false;
+
+	while (!validInput) {
+		cout << "1. Stun Gun - Increases Base Damage by 2!" << endl;
+		cout << "2. Security Vest - Reduce Damage taken by 2!" << endl;
+		cout << "3. Half a Hotdog and a Redbull - Increases Damage by 3 for one combat, but deals 3 damage to you! Is that mold?" << endl;
+		getline(cin, playerInput);
+
+		if (playerInput == "1") {
+			mc.add_item(Item("Stun Gun", "Swords", 2, 0, 0, false));
+			cout << "Added Stun Gun!" << endl;
+			cout << "... What's this?" << endl;
+			cout << "Added TSA Service Weapon! One in the Chamber! Deals 12 Damage!" << endl;
+			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false));
+			return;
+		}
+		else if (playerInput == "2") {
+			mc.add_item(Item("Security Vest", "Shields", 0, 2, 0, false));
+			cout << "Added Security Vest!" << endl;
+			cout << "... What's this?" << endl;
+			cout << "Added TSA Service Weapon! One in the Chamber! Deals 12 Damage!" << endl;
+			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false));
+			return;
+		}
+		else if (playerInput == "3") {
+			mc.add_item(Item("Half a Hotdog and a Redbull", "Potions", 3, -3, 0, false));
+			cout << "Added Half a Hotdog and a Redbull!" << endl;
+			cout << "... What's this?" << endl;
+			cout << "Added TSA Service Weapon! One in the Chamber! Deals 12 Damage!" << endl;
+			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false));
+			return;
+		}
+		else {
+			cout << "Omnipresent Voice: You know what? Screw you, you get no item." << endl;
+			return;
+		}
+	}
+
+	
 }
