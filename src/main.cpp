@@ -11,6 +11,7 @@
 #include "character.h"
 #include <iostream>
 #include "ItemChoice.h"
+#include "utility.h"
 
 using namespace std;
 
@@ -37,9 +38,9 @@ int main()
 {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INTRODUCTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     cout <<"==================================================================="<< endl;
-	cout <<"Welcome to Hell Adventurer, this is Newark Liberty International Airport!" << endl;
-	cout <<"Voted the worst airport in the United States according to AirHelp's Global Airport Ranking (2019)." << endl;
-	cout <<"It looks like you have a flight departing in ... 1 hour!! Better Hurry!" << endl;
+    printLetterByLetter("Welcome to Hell Adventurer, this is Newark Liberty International Airport!");
+    printLetterByLetter("Voted the worst airport in the United States according to AirHelp's Global Airport Ranking (2019).");
+    printLetterByLetter("It looks like you have a flight departing in ... 1 hour!! Better Hurry!");
     cout <<"===================================================================" << endl;
     // int playerCurrency = 150;          // Starting currency for the player
     int playerDamageReduction = 0;  // Default damage reduction
