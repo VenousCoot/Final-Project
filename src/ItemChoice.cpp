@@ -109,17 +109,17 @@ void TerminalItems(main_character& mc) {
 		getline(cin, playerInput);
 
 		if (playerInput == "1") {
-			mc.add_item(Item("Laptop Bag", "Swords", 2, 0, 0, false));
+			mc.add_item(Item("Laptop Bag", "Swords", 2, 0, 0, false, false, false));
 			cout << "Added Laptop Bag!" << endl;
 			return;
 		}
 		else if (playerInput == "2") {
-			mc.add_item(Item("Meat Shield", "Shields", 0, 5, 0, false));
+			mc.add_item(Item("Meat Shield", "Shields", 0, 5, 0, false, true, false));
 			cout << "Added Meat Shield!" << endl;
 			return;
 		}
 		else if (playerInput == "3") {
-			mc.add_item(Item("Shake Shack", "Potions", 0, 6, 0, false));
+			mc.add_item(Item("Shake Shack", "Potions", 0, 6, 0, false, false, false));
 		}
 		else {
 			cout << "Omnipresent Voice: I really wish I could give you no items, but that's not how this works." << endl;
@@ -145,27 +145,27 @@ void GateItems(main_character& mc) {
 		getline(cin, playerInput);
 
 		if (playerInput == "1") {
-			mc.add_item(Item("Stun Gun", "Swords", 2, 0, 0, false));
+			mc.add_item(Item("Stun Gun", "Swords", 2, 0, 0, false, false, false));
 			cout << "Added Stun Gun!" << endl;
 			cout << "... What's this?" << endl;
 			cout << "Added TSA Service Weapon! One in the Chamber! Deals 12 Damage!" << endl;
-			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false));
+			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false, true, false));
 			return;
 		}
 		else if (playerInput == "2") {
-			mc.add_item(Item("Security Vest", "Shields", 0, 2, 0, false));
+			mc.add_item(Item("Security Vest", "Shields", 0, 2, 0, false, false, false));
 			cout << "Added Security Vest!" << endl;
 			cout << "... What's this?" << endl;
 			cout << "Added TSA Service Weapon! One in the Chamber! Deals 12 Damage!" << endl;
-			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false));
+			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false, true, false));
 			return;
 		}
 		else if (playerInput == "3") {
-			mc.add_item(Item("Half a Hotdog and a Redbull", "Potions", 3, -3, 0, false));
+			mc.add_item(Item("Half a Hotdog and a Redbull", "Potions", 3, -3, 0, false, false, false));
 			cout << "Added Half a Hotdog and a Redbull!" << endl;
 			cout << "... What's this?" << endl;
 			cout << "Added TSA Service Weapon! One in the Chamber! Deals 12 Damage!" << endl;
-			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false));
+			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false, true, false));
 			return;
 		}
 		else {
