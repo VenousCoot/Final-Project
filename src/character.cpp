@@ -4,10 +4,10 @@
 #include "character.h"
 #include <algorithm>
 #include "Items.h"
+#include "utility.h"
 
 using namespace std;
 
-//
 // Constructor
 main_character::main_character(){};
 
@@ -23,38 +23,37 @@ void main_character::set_name(const string name){
 // Function for player to pick a name for their character
 void main_character::pick_player_name(){
     string character_name;
-    cout << "Please enter your name / The name of your character: ";
+    printLetterByLetter("Please enter your name / The name of your character: ");
     getline(cin, character_name); // Read entire line for name
 
     bool verified = false;
     while(!verified){
         string selection;
-        cout << "Your name is: " << character_name << endl;
-        cout << "Is this right? (Type '1' for yes, '2' for no): ";
+        printLetterByLetter("Your name is: " + character_name + "\n");
+        printLetterByLetter("Is this right? (Type '1' for yes, '2' for no): ");
         getline(cin, selection);
         while(selection != "1" && selection != "2"){
-            cout << "Input a number buddy... either 1 or 2: ";
+            printLetterByLetter("Input a number buddy... either 1 or 2: ");
             getline(cin, selection); // Read entire line for selection
         }
 
         if (selection == "1"){
             set_name(character_name); // Update the main_character object with the confirmed name
-            cout << "Okay, then let's continue, " << get_name() << "!" << endl;
+            printLetterByLetter("Okay, then let's continue, " + get_name() + "!\n");
             verified = true;
         } else if (selection == "2"){
-            cout << "Please re-input your name!: ";
+            printLetterByLetter("Please re-input your name!: ");
             getline(cin, character_name); // Read entire line for new name
         }
     }
 }
 
-
 // Players action choises:
 string main_character::player_action() {
     bool verify = false;
     string action;
-    cout << "What would you like to do? (Enter the number associated with the action)" << endl;
-    cout << "Choices: Attack (1), Defend (2), Item (3): ";
+    printLetterByLetter("What would you like to do? (Enter the number associated with the action)\n");
+    printLetterByLetter("Choices: Attack (1), Defend (2), Item (3): ");
     getline(cin, action);
 
     while (!verify) {
@@ -66,7 +65,7 @@ string main_character::player_action() {
             Item item = use_item();
             if (item.name == "none") {
                 // If no item was used, loop back to the options
-                cout << "Choices: Attack (1), Defend (2), Item (3): ";
+                printLetterByLetter("Choices: Attack (1), Defend (2), Item (3): ");
                 getline(cin, action);
                 continue;
             } else if (item.damage != 0) {
@@ -75,14 +74,13 @@ string main_character::player_action() {
                 return "item";
             }
         } else {
-            cout << "Okay wise guy, how about you enter something valid here 0_0" << endl;
+            printLetterByLetter("Okay wise guy, how about you enter something valid here 0_0\n");
         }
-        cout << "Choices: Attack (1), Defend (2), Item (3): ";
+        printLetterByLetter("Choices: Attack (1), Defend (2), Item (3): ");
         getline(cin, action);
     }
     return "None";
 }
-
 
 // Grab a specific parameter from the main character's stats
 int main_character::get_parameter(const string& option) {
@@ -101,7 +99,7 @@ int main_character::get_parameter(const string& option) {
     } else if (option == "money") {
         return main_character::money;
     } else {
-        cout << "Invalid parameter name input. ERROR IN: character.cpp (get)" << endl;
+        printLetterByLetter("Invalid parameter name input. ERROR IN: character.cpp (get)\n");
         return -1; // Return a specific value for invalid parameters
     }
 }
@@ -112,7 +110,7 @@ void main_character::update_parameter(const string& parameter, int update_amount
 
     // Check for valid parameter
     if (old_p == -1) {
-        cout << "Invalid Parameter Name" << endl;
+        printLetterByLetter("Invalid Parameter Name\n");
         return;
     }
 
@@ -153,7 +151,7 @@ void main_character::parameter_selection(const string& param_name, int value) {
     } else if (param_name == "money") {
         main_character::money = value;
     } else {
-        cout << "Invalid parameter name input. ERROR IN: character.cpp (set)" << endl;
+        printLetterByLetter("Invalid parameter name input. ERROR IN: character.cpp (set)\n");
     }
 }
 
@@ -174,8 +172,8 @@ void main_character::remove_item(const string& item_name) {
 }
 
 void main_character::display_inventory() const {
-    cout << "Inventory:" << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    printLetterByLetter("Inventory:\n");
+    printLetterByLetter("~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     for (const auto& item : inventory) {
         item.display();
     }
@@ -183,33 +181,33 @@ void main_character::display_inventory() const {
 }
 
 void main_character::display_all_parameters() const {
-    cout << "Character Name: " << name << endl;
-    cout << "Max HP: " << max_hp << endl;
-    cout << "Current HP: " << hp << endl;
-    cout << "Attack: " << att << endl;
-    cout << "Defense: " << def << endl;
-    cout << "Special Defense: " << sd << endl;
-    cout << "Special Attack: " << sa << endl;
-    cout << "Money: " << money << endl;
+    printLetterByLetter("Character Name: " + name + "\n");
+    printLetterByLetter("Max HP: " + to_string(max_hp) + "\n");
+    printLetterByLetter("Current HP: " + to_string(hp) + "\n");
+    printLetterByLetter("Attack: " + to_string(att) + "\n");
+    printLetterByLetter("Defense: " + to_string(def) + "\n");
+    printLetterByLetter("Special Defense: " + to_string(sd) + "\n");
+    printLetterByLetter("Special Attack: " + to_string(sa) + "\n");
+    printLetterByLetter("Money: " + to_string(money) + "\n");
 }
 
 // Use item function:
 Item main_character::use_item() {
     if (inventory.empty()) {
-        std::cout << "You have no items." << std::endl;
+        printLetterByLetter("You have no items.\n");
         return Item("none", "none", 0, 0, 0, false, false, false); // Return a default-constructed Item object
     }
 
     std::string item_name;
     display_inventory();
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-    std::cout << "Input the name of the item you want to use or type 'back' to go back: ";
+    printLetterByLetter("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printLetterByLetter("Input the name of the item you want to use or type 'back' to go back: ");
     getline(std::cin, item_name);
 
     bool item_found = false;
     while (!item_found) {
         if (item_name == "back") {
-            std::cout << "Returning to previous menu." << std::endl;
+            printLetterByLetter("Returning to previous menu.\n");
             return Item("none", "none", 0, 0, 0, false, false, false); // Return a default-constructed Item object
         }
 
@@ -217,14 +215,14 @@ Item main_character::use_item() {
             if (it->get_name() == item_name) {
                 apply_item(*it); // Pass the Item object to apply_item
                 item_found = true;
-                std::cout << main_character::name << " used " << it->get_name() << "." << std::endl; // Ensure proper formatting
+                printLetterByLetter(main_character::name + " used " + it->get_name() + ".\n");
                 main_character::display_all_parameters();
                 return *it;
             }
         }
 
         if (!item_found) {
-            std::cout << "Item \"" << item_name << "\" not found in inventory. Please try again or type 'back' to go back: ";
+            printLetterByLetter("Item \"" + item_name + "\" not found in inventory. Please try again or type 'back' to go back: ");
             getline(std::cin, item_name);
         }
     }
@@ -236,22 +234,22 @@ Item main_character::use_item() {
 void main_character::apply_item(Item& item) {
     // Update parameters based on item properties
     if (item.name == "First Class Boarding Pass"){
-        cout << "It's a boarding pass...." << endl;
+        printLetterByLetter("It's a boarding pass....\n");
         return;
     }
     if (item.name == "Stylish Hat") {
-        cout << "Omnipresent voice: Cool hat huh???? RIGHT??? " << endl;
+        printLetterByLetter("Omnipresent voice: Cool hat huh???? RIGHT??? \n");
         return;
     }
     if (item.name == "Advil") {
         main_character::update_parameter("max_hp", item.health);
     }
     if (item.name == "Suspicious Ticking Suitcase") {
-        cout << "Well, it's not a bomb... but you did lose your turn!" << endl;
+        printLetterByLetter("Well, it's not a bomb... but you did lose your turn!\n");
     }
     if (item.name == "Meat Shield" && item.isUsed == true){
-        cout << "You pull a grandma in front of you to take the hit.... She dies" << endl;
-        cout << "Omnipresent voice: Wow you're a piece of shit" << endl;
+        printLetterByLetter("You pull a grandma in front of you to take the hit.... She dies\n");
+        printLetterByLetter("Omnipresent voice: Wow you're a piece of shit\n");
     }
     if (item.damage != 0) {
         main_character::update_parameter("att", item.damage);

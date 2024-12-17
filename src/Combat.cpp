@@ -23,6 +23,8 @@ void Combat::startCombat(std::unique_ptr<NPC>& npc, main_character& character) {
 
     if (character.get_parameter("hp") <= 0) {
         printLetterByLetter(character.get_name() + " is defeated!"); // Use letter-by-letter print function
+        printLetterByLetter("GAME OVER!!!!!!");
+        return;
     }
 }
 

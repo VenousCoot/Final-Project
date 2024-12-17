@@ -45,32 +45,43 @@ int main()
     // int playerCurrency = 150;          // Starting currency for the player
     int playerDamageReduction = 0;  // Default damage reduction
 
+    srand(static_cast<unsigned>(time(0)));    // Seed the random number geerator
+
     player.pick_player_name();
     cout <<"===================================================================" << endl;
     cout <<"Stats:" << endl;
     player.display_all_parameters();
-    cout <<"===================================================================" << endl;
-	cout << "DEMO FOR STAGES (LOBBY DEMO)" << endl;
-    cout <<"===================================================================" << endl;
-    std::cout << "Press Enter to continue...";
-    std::cin.get(); // Waits for the user to press Enter
+    cout << "Press Enter to continue...";
+    cin.get(); // Waits for the user to press Enter
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INTRO END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STAGE LOBBY  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	lobby.enter();
-
-	// terminal.enter();
-    // gate.enter();
-    // plane.enter();
-
-    // Seed the random number geerator
-    srand(static_cast<unsigned>(time(0)));
-
-
-
-
-
-    // Create multiple NPCs with different stats, weights, and initial attack values
-
     auto Receptionist = make_unique<NPC>("Receptionist", 10, 2, 80, 10, 10, 0, 0);
+    cout << "Press Enter to continue...";
+    cin.get(); // Waits for the user to press Enter;
+
+    Combat::startCombat(Receptionist, player); // Start combat between player and lobby NPC
+
+    // Check and print the health of each NPC after combat
+
+    if (Receptionist) {
+        cout << Receptionist->getName() << " survived the fight with " << Receptionist->getHealth() << " health remaining."
+            << endl;
+    }
+    if (player.get_parameter("hp") > 0) {
+        cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining."
+            << endl;
+    }
+
+
+
+
+
+
+
+    
 
 
 
@@ -99,25 +110,7 @@ int main()
 //        std::cout << Receptionest.getName() << " now has " << Receptionest.getAttack() << " attack.\n";
 
 
-    cout <<"===================================================================" << endl;
-    cout << "DEMO FOR COMBAT (BETWEEN PLAYER AND RECEPTIONIST)" << endl;
-    cout <<"===================================================================" << endl;
-    std::cout << "Press Enter to continue...";
-    std::cin.get(); // Waits for the user to press Enter;
-    // TEST CODE FOR COMBAT INTERACTIONS
 
-    Combat::startCombat(Receptionist, player);
-
-    // Check and print the health of each NPC after combat
-
-    if (Receptionist) {
-        cout << Receptionist->getName() << " survived the fight with " << Receptionist->getHealth() << " health remaining."
-            << endl;
-    }
-    if (player.get_parameter("hp") > 0) {
-        cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining."
-            << endl;
-    }
 
     cout <<"===================================================================" << endl;
     cout << "DEMO FOR LOOT DROP " << endl;

@@ -159,8 +159,7 @@ void Terminal::enter() {
 				}
 				else if (playerInput == "2"){
                     printLetterByLetter(npcName2 + ": To keep assholes like you out.");
-                    return;
-					// Bring you to combat
+                    return; // Return to main for combat
 				}
 				else {
                     printLetterByLetter(npcName2 + ": I'm sorry, were you trying to say something?");
