@@ -38,7 +38,7 @@ int main()
 {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INTRODUCTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     cout <<"==================================================================="<< endl;
-    printLetterByLetter("Welcome to Hell Adventurer, this is Newark Liberty International Airport!");
+    printLetterByLetter("Welcome to Hell, Adventurer, this is Newark Liberty International Airport!");
     printLetterByLetter("Voted the worst airport in the United States according to AirHelp's Global Airport Ranking (2019).");
     printLetterByLetter("It looks like you have a flight departing in ... 1 hour!! Better Hurry!");
     cout <<"===================================================================" << endl;
@@ -56,7 +56,7 @@ int main()
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INTRO END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STAGE LOBBY  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STAGE BEGIN: LOBBY  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	lobby.enter();
     auto Receptionist = make_unique<NPC>("Receptionist", 10, 2, 80, 10, 10, 0, 0);
     cout << "Press Enter to continue...";
@@ -65,26 +65,19 @@ int main()
     Combat::startCombat(Receptionist, player); // Start combat between player and lobby NPC
 
     // Check and print the health of each NPC after combat
-
-    if (Receptionist) {
-        cout << Receptionist->getName() << " survived the fight with " << Receptionist->getHealth() << " health remaining."
-            << endl;
-    }
     if (player.get_parameter("hp") > 0) {
         cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining."
             << endl;
+    }else{
+        printLetterByLetter("Thank you for playing, hope you win next time!");
     }
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STAGE END: LOBBY  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STAGE BEGIN: SECURITY  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
     
-
-
-
 
 //        TEST CODE FOR NPC FUNCTIONS
 //
@@ -112,63 +105,63 @@ int main()
 
 
 
-    cout <<"===================================================================" << endl;
-    cout << "DEMO FOR LOOT DROP " << endl;
-    cout <<"===================================================================" << endl;
-    std::cout << "Press Enter to continue...";
-    std::cin.get(); // Waits for the user to press Enter;
-    LobbyItems(player);
+    // cout <<"===================================================================" << endl;
+    // cout << "DEMO FOR LOOT DROP " << endl;
+    // cout <<"===================================================================" << endl;
+    // std::cout << "Press Enter to continue...";
+    // std::cin.get(); // Waits for the user to press Enter;
+    // LobbyItems(player);
     
 
-    cout <<"===================================================================" << endl;
-    cout << "DEMO FOR SHOP" << endl;
-    cout <<"===================================================================" << endl;
-    std::cout << "Press Enter to continue...";
-    std::cin.get(); // Waits for the user to press Enter;
+    // cout <<"===================================================================" << endl;
+    // cout << "DEMO FOR SHOP" << endl;
+    // cout <<"===================================================================" << endl;
+    // std::cout << "Press Enter to continue...";
+    // std::cin.get(); // Waits for the user to press Enter;
 
-    initializeShopItems(shopItems);
-    int money;
-    money = purchaseItem(shopItems, player.get_parameter("money"), player);
-    player.set_parameter("money",money);
+    // initializeShopItems(shopItems);
+    // int money;
+    // money = purchaseItem(shopItems, player.get_parameter("money"), player);
+    // player.set_parameter("money",money);
 
-    cout << "\nFinal Player State:" << endl;
-    cout << "Currency: $" << player.get_parameter("money") << endl;
+    // cout << "\nFinal Player State:" << endl;
+    // cout << "Currency: $" << player.get_parameter("money") << endl;
 
-    auto TSA_Agent = make_unique<NPC>("TSA Agent", 20, 2, 80, 10, 10, 0, 0);
-
-
-
-    cout <<"===================================================================" << endl;
-    cout << "Security Demo (BETWEEN PLAYER AND TSA AGENT (ALSO USE ITEMS HERE))" << endl;
-    cout <<"===================================================================" << endl;
-
-    security.enter();
-
-    cout <<"===================================================================" << endl;
-    cout << "DEMO FOR COMBAT (BETWEEN PLAYER AND TSA AGENT (ALSO USE ITEMS HERE))" << endl;
-    cout <<"===================================================================" << endl;
-    std::cout << "Press Enter to continue...";
-    std::cin.get(); // Waits for the user to press Enter;
+    // auto TSA_Agent = make_unique<NPC>("TSA Agent", 20, 2, 80, 10, 10, 0, 0);
 
 
 
-    Combat::startCombat(TSA_Agent, player);
+    // cout <<"===================================================================" << endl;
+    // cout << "Security Demo (BETWEEN PLAYER AND TSA AGENT (ALSO USE ITEMS HERE))" << endl;
+    // cout <<"===================================================================" << endl;
 
-    // Check and print the health of each NPC after combat
+    // security.enter();
 
-    if (TSA_Agent) {
-        cout << TSA_Agent->getName() << " survived the fight with " << TSA_Agent->getHealth() << " health remaining."
-            << endl;
-    }
-    if (player.get_parameter("hp") > 0) {
-        cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining."
-            << endl;
-    }
-
+    // cout <<"===================================================================" << endl;
+    // cout << "DEMO FOR COMBAT (BETWEEN PLAYER AND TSA AGENT (ALSO USE ITEMS HERE))" << endl;
+    // cout <<"===================================================================" << endl;
+    // std::cout << "Press Enter to continue...";
+    // std::cin.get(); // Waits for the user to press Enter;
 
 
-    std::cout << "Press Enter to continue...";
-    std::cin.get(); // Waits for the user to press Enter;
+
+    // Combat::startCombat(TSA_Agent, player);
+
+    // // Check and print the health of each NPC after combat
+
+    // if (TSA_Agent) {
+    //     cout << TSA_Agent->getName() << " survived the fight with " << TSA_Agent->getHealth() << " health remaining."
+    //         << endl;
+    // }
+    // if (player.get_parameter("hp") > 0) {
+    //     cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining."
+    //         << endl;
+    // }
+
+
+
+    // std::cout << "Press Enter to continue...";
+    // std::cin.get(); // Waits for the user to press Enter;
 
     return 0;
 }
