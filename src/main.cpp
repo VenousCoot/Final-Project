@@ -184,7 +184,8 @@ int main()
         if (end_time - start_time < TTF){
             pLBL("Gate Agent: Sorry, your flight has left already without you.");
             pLBL("Omnipresent Voice: ... HAHAHAHHAHAHAHAHAHHAHHAHAHHAHAHAHAHAHAH... ");
-            pLBL(" HAHAHHAHA... wow. Wow. WOW! You really messed this up huh. Maybe if you spent less time beating up random people and more time actually going to your gate...");
+            pLBL(" HAHAHHAHA... wow. Wow. WOW! You really messed this up huh. Maybe if you spent less time beating up random people");
+            pLBL(" and more time actually going to your gate...");
             pLBL(" YOU WOULDN'T HAVE TOTALLY MISSED YOUR FLIGHT HAHAHAHHAHAHAHAHHAHAHAHHAHAHAHAH");
             pLBL(" ... moron.");
             pLBL(" Game Over");
