@@ -2,6 +2,7 @@
 #define ROOM_H
 
 #include <string>
+#include "character.h"
 
 using namespace std;
 
@@ -28,28 +29,34 @@ private:
     string npcName;
 };
 
-class Terminal : public Room {
+class Terminal{
 public:
     Terminal();
-    void enter() override;
+    void enterTerminal(main_character& player);
 private:
     string npcName1;
     string npcName2;
+protected:
+    string description;
 };
 
-class Gate : public Room {
+class Gate{
 public:
     Gate(bool hasFirstClassBoardingPass);
-    void enter() override;
+    void enterGate(main_character& player);
+    void setBoardingPass(bool value);
 private:
-    string npcName;
     bool hasFirstClassBoardingPass;
+    string npcName;
+protected:
+    string description;
 };
 
 class Plane : public Room {
 public:
     Plane(bool hasStylishHat);
     void enter() override;
+    void setStylishHat(bool value);
 private:
     string npcName;
     bool hasStylishHat;

@@ -12,15 +12,27 @@ using namespace std;
 class main_character {
     private:
         string name;
-        int max_hp = 20;
-        int hp = 20;
-        int att = 5;
+        int max_hp = 1000;
+        int hp = 1000;
+        int att = 10;
         int def = 2;
         int sd = 0;
         int sa = 0;
         int money = 150;
         vector <Item> inventory;
+        vector <bool> checks; // Sets the boolean check that the player may or may not need to have options. 
     public:
+        bool shop = false;
+        bool shopKeep = false;
+        bool hasFirstClassBoardingPass = false;
+        bool fistClassSkip = false;
+        bool fightSkip = false;
+
+        bool get_check(int check);
+
+        void updateChecks(int check, bool value); // Function to set the checks to a specific check type
+        // 1 is going to shop. 2 is fighting shopkeep. 3 is firstclassboardingpass. 4 is fight skip 5 is stylish hat
+
         // Constructor
         main_character();
         // Main character function to select a name:
@@ -45,7 +57,7 @@ class main_character {
         void display_all_parameters() const;
 
         // Inventory management functions
-        void add_item(const Item& item);
+        void add_item(Item item);
         void remove_item(const string& item_name);
         void display_inventory() const;
         Item use_item();
@@ -53,4 +65,4 @@ class main_character {
         vector <Item> get_inventory();
 };
 
-#endif // CHARACTER_H
+#endif 

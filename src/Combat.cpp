@@ -18,6 +18,9 @@ void Combat::startCombat(std::unique_ptr<NPC>& npc, main_character& character) {
     // Check if NPC has zero health to destroy them immediately
     if (npc && npc->getHealth() <= 0) {
         printLetterByLetter(npc->getName() + " is defeated!"); // Use letter-by-letter print function
+        int dropped_money = rand() % 50;
+        printLetterByLetter(npc->getName() + " has dropped $" + to_string(dropped_money));
+        character.update_parameter("money", dropped_money);
         npc.reset(); // Destroy npc
     }
 

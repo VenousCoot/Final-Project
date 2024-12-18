@@ -311,12 +311,14 @@ void Gate::enterGate(main_character& player) {
                 cout << "Player Dialog Options:" << endl;
                 cout << "1. What's 0A?" << endl;
                 cout << "2. Where's that?" << endl;
+                getline(cin, playerInput);
+
                 if (playerInput == "1" || playerInput == "2") {
                     printLetterByLetter(npcName + ": Well that's the Captain's seat of course!" );
                     return;
                 }
                 else {
-                    printLetterByLetter(npcName + "Pardon? \n" );
+                    printLetterByLetter(npcName + ": Pardon? \n" );
                     printLetterByLetter( "Omnipresent Voice: Seriously? This late in the game? \n" );
 
                 }
@@ -340,7 +342,7 @@ Plane::Plane(bool hasStylishHat) : hasStylishHat(hasStylishHat){
 void Plane::enter() {
     printLetterByLetter( description );
     printLetterByLetter("This is the last obstacle in your path. Usually I would ask you to not get into a fight here, but I honestly doubt that you have a choice in this scenario." );
-    printLetterByLetter( "Good Luck, Adventurer! \n" );
+    printLetterByLetter( "Good Luck! \n" );
     printLetterByLetter( npcName + ": My plane my rules moron! Rule number 1 is that I hate you and you can't fly on my plane. " );
     printLetterByLetter("Rule number 2 is that there are no further rules. \n" );
 
@@ -364,7 +366,7 @@ void Plane::enter() {
 			return;
 			}
 		else if (playerInput == "2") {
-            printLetterByLetter(npcName + "BRING IT ONNNNNNNNN!!!!" );
+            printLetterByLetter(npcName + ": BRING IT ONNNNNNNNN!!!!" );
 			return;
 		}
 		else if (playerInput == "3") {
@@ -373,11 +375,11 @@ void Plane::enter() {
 		}
 		else if (playerInput == "4" && hasStylishHat) {
 			printLetterByLetter( "Omnipresent Voice: That was never going to work. \n" );
-            printLetterByLetter(npcName + "Hmm ... No I think I'll beat you up now" );
+            printLetterByLetter(npcName + ": Hmm ... No I think I'll beat you up now" );
 			return;
 		}
 		else {
-            printLetterByLetter(npcName + "What the hell are you talking about. \n" );
+            printLetterByLetter(npcName + ": What the hell are you talking about. \n" );
 			printLetterByLetter( "Omnipresent Voice: Bruh \n" );
 		}
 	}

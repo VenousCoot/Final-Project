@@ -48,7 +48,7 @@ void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& sword
 }
 
 // Initialize shop items
-void initializeShopItems(std::vector<Item>& shopItems) {
+void initializeShopItems(std::vector<Item> shopItems) {
     shopItems.push_back(Item("Laptop Bag", "Swords", 2, 0, 60, false, false, false));
     shopItems.push_back(Item("Meat Shield", "Shields", 0, 5, 60, true, true, false));
     shopItems.push_back(Item("Shake Shack", "Potions", 0, 6, 20, true, true, false));
@@ -82,11 +82,8 @@ int purchaseItem(std::vector<Item>& shopItems, int playerCurrency, main_characte
                 std::cout << "You bought: " << selectedItem.name << " for $" << selectedItem.cost << std::endl;
                 std::cout << "Remaining Currency: $" << playerCurrency << std::endl;
 
-                if (selectedItem.name == "Security Vest") {
-                    std::cout << "Equipped Security Vest: DEF stat increased by 2!" << std::endl;
-                    player.apply_item(selectedItem);
-                } else if (selectedItem.name == "Meat Shield") {
-                    std::cout << "Equipped Meat Suit: DEF stat increased by 4!" << std::endl;
+                if (selectedItem.name == "Laptop Bag") {
+                    std::cout << "Equipped Laptop Bag: DEF stat increased by 2!" << std::endl;
                     player.apply_item(selectedItem);
                 } else {
                     player.add_item(selectedItem);

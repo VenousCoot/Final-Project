@@ -1,6 +1,7 @@
 #include "Items.h"
 #include "character.h"
 #include <iostream>
+#include "room.h"
 
 using namespace std;
 
@@ -22,17 +23,14 @@ void LobbyItems(main_character& mc) {
 
 		if (playerInput == "1") {
 			mc.add_item(Item("Stanley Cup", "Swords", 1, 0, 0, false, false, false));
-			cout << "Added Stanley Cup!" << endl;
 			return;
 		}
 		else if (playerInput == "2") {
 			mc.add_item(Item("Advil", "Shields", 0, 1, 0, false, false, false));
-			cout << "Added Advil!" << endl;
 			return;
 		}
 		else if (playerInput == "3") {
 			mc.add_item(Item("Slightly Browned Banana", "Potions", 0, 3, 0, false, true, false));
-			cout << "Added Slightly Browned Banana!" << endl;
 			return;
 		}
 		else if (playerInput == "4") {
@@ -64,22 +62,18 @@ void SecurityItems(main_character& mc) {
 
 		if (playerInput == "1") {
 			mc.add_item(Item("TSA Beat-stick", "Swords", 1, 0, 0, false, false, false));
-			cout << "Added TSA Beat-stick!" << endl;
 			return;
 		}
 		else if (playerInput == "2") {
 			mc.add_item(Item("Half a Bottle of Whiskey", "Potions", 2, 0, 0, false, true, false));
-			cout << "Added Half a Bottle of Whiskey!" << endl;
 			return;
 		}
 		else if (playerInput == "3") {
 			mc.add_item(Item("Stylish Hat", "Potions", 0, 0, 0, false, false, false));
-			cout << "Added Stylish Hat!" << endl;
 			return;
 		}
 		else if (playerInput == "4") {
 			mc.add_item(Item("Suspicious Ticking Suitcase", "Potions", 0, 0, 0, false, true, false));
-			cout << "Added Suspicious Ticking Suitcase!" << endl;
 			return;
 		}
 		else {
@@ -110,12 +104,10 @@ void TerminalItems(main_character& mc) {
 
 		if (playerInput == "1") {
 			mc.add_item(Item("Laptop Bag", "Swords", 2, 0, 0, false, false, false));
-			cout << "Added Laptop Bag!" << endl;
 			return;
 		}
 		else if (playerInput == "2") {
 			mc.add_item(Item("Meat Shield", "Shields", 0, 5, 0, false, true, false));
-			cout << "Added Meat Shield!" << endl;
 			return;
 		}
 		else if (playerInput == "3") {
@@ -148,7 +140,6 @@ void GateItems(main_character& mc) {
 			mc.add_item(Item("Stun Gun", "Swords", 2, 0, 0, false, false, false));
 			cout << "Added Stun Gun!" << endl;
 			cout << "... What's this?" << endl;
-			cout << "Added TSA Service Weapon! One in the Chamber! Deals 12 Damage!" << endl;
 			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false, true, false));
 			return;
 		}
@@ -156,7 +147,6 @@ void GateItems(main_character& mc) {
 			mc.add_item(Item("Security Vest", "Shields", 0, 2, 0, false, false, false));
 			cout << "Added Security Vest!" << endl;
 			cout << "... What's this?" << endl;
-			cout << "Added TSA Service Weapon! One in the Chamber! Deals 12 Damage!" << endl;
 			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false, true, false));
 			return;
 		}
@@ -164,7 +154,6 @@ void GateItems(main_character& mc) {
 			mc.add_item(Item("Half a Hotdog and a Redbull", "Potions", 3, -3, 0, false, false, false));
 			cout << "Added Half a Hotdog and a Redbull!" << endl;
 			cout << "... What's this?" << endl;
-			cout << "Added TSA Service Weapon! One in the Chamber! Deals 12 Damage!" << endl;
 			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false, true, false));
 			return;
 		}
