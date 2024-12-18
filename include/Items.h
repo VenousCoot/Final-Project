@@ -26,7 +26,7 @@ public:
 
 // Function declarations
 void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& swords, std::vector<Item>& potions);
-void initializeShopItems(std::vector<Item> shopItems);
+void initializeShopItems(std::vector<Item>& shopItems);
 int purchaseItem(std::vector<Item>& shopItems, int playerCurrency, main_character& player);
 
 

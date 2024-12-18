@@ -48,7 +48,7 @@ void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& sword
 }
 
 // Initialize shop items
-void initializeShopItems(std::vector<Item> shopItems) {
+void initializeShopItems(std::vector<Item>& shopItems) {
     shopItems.push_back(Item("Laptop Bag", "Swords", 2, 0, 60, false, false, false));
     shopItems.push_back(Item("Meat Shield", "Shields", 0, 5, 60, true, true, false));
     shopItems.push_back(Item("Shake Shack", "Potions", 0, 6, 20, true, true, false));
