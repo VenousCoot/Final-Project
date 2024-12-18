@@ -2,14 +2,15 @@
 #include "character.h"
 #include <iostream>
 #include "room.h"
+#include "utility.h"
 
 using namespace std;
 
 void LobbyItems(main_character& mc) {
 
-	cout << "Receptionist: You won't make it through security like that." << endl;
-	cout << "Omnipresent Voice: Oh look at that! She dropped a suitcase!" << endl;
-	cout << "Pick an Item from these Choices:" << endl;
+	pLBL ("Receptionist: You won't make it through security like that.");
+	pLBL ("Omnipresent Voice: Oh look at that! She dropped a suitcase!");
+	pLBL ("Pick an Item from these Choices:");
 
 	string playerInput;
 	bool validInput = false;
@@ -39,16 +40,16 @@ void LobbyItems(main_character& mc) {
 			return;
 		}
 		else {
-			cout << "Omnipresent Voice: Please select an Item to aid you on your Journey!" << endl;
+			pLBL ( "Omnipresent Voice: Please select an Item to aid you on your Journey!");
 		}
 	}
 
 }
 
 void SecurityItems(main_character& mc) {
-	cout << "TSA Agent: That was a cheap shot ... I'll have you cavity searched next time you come through here." << endl;
-	cout << "Omnipresent Voice: Theres a bunch of stuff on that desk behind him." << endl;
-	cout << "Pick an Item:" << endl;
+	pLBL ( "TSA Agent: That was a cheap shot ... I'll have you cavity searched next time you come through here." );
+	pLBL ( "Omnipresent Voice: Theres a bunch of stuff on that desk behind him." );
+	pLBL ( "Pick an Item:" );
 
 	string playerInput;
 	bool validInput = false;
@@ -77,7 +78,7 @@ void SecurityItems(main_character& mc) {
 			return;
 		}
 		else {
-			cout << "Omnipresent Voice: Just pick a number between 1 and 4" << endl;
+			pLBL ("Omnipresent Voice: Just pick a number between 1 and 4" );
 
 		}
 	}
@@ -89,9 +90,9 @@ void SecurityItems(main_character& mc) {
 
 void TerminalItems(main_character& mc) {
 
-	cout << "Annoyed Man: Wow! That really helped me release some of the stress! Thanks man!" << endl;
-	cout << "Omnipresent Voice: You beating the crap out of him made him drop his suitcase if you wanna rob him too." << endl;
-	cout << "Rummage Through this guys stuff:" << endl;
+	pLBL ( "Annoyed Man: Wow! That really helped me release some of the stress! Thanks man!" );
+	pLBL ( "Omnipresent Voice: You beating the crap out of him made him drop his suitcase if you wanna rob him too." );
+	pLBL ( "Rummage Through this guys stuff:" );
 
 	string playerInput;
 	bool validInput = false;
@@ -112,9 +113,10 @@ void TerminalItems(main_character& mc) {
 		}
 		else if (playerInput == "3") {
 			mc.add_item(Item("Shake Shack", "Potions", 0, 6, 0, false, false, false));
+			return;
 		}
 		else {
-			cout << "Omnipresent Voice: I really wish I could give you no items, but that's not how this works." << endl;
+			pLBL ( "Omnipresent Voice: I really wish I could give you no items, but that's not how this works." );
 
 		}
 	}
@@ -123,9 +125,9 @@ void TerminalItems(main_character& mc) {
 
 void GateItems(main_character& mc) {
 
-	cout << "Flight Attendant: You will never defeat The Captain!" << endl;
-	cout << "Omnipresent Voice: Well, what are you waiting for? This is no time for you to finally grow some morals. Steal her stuff like you always do." << endl;
-	cout << "Rob the Flight Attendant:" << endl;
+	pLBL ( "Flight Attendant: You will never defeat The Captain!" );
+	pLBL ( "Omnipresent Voice: Well, what are you waiting for? This is no time for you to finally grow some morals. Steal her stuff like you always do." );
+	pLBL ( "Rob the Flight Attendant:" );
 
 	string playerInput;
 	bool validInput = false;
@@ -158,7 +160,7 @@ void GateItems(main_character& mc) {
 			return;
 		}
 		else {
-			cout << "Omnipresent Voice: You know what? Screw you, you get no item." << endl;
+			pLBL ( "Omnipresent Voice: You know what? Screw you, you don't get an item." );
 			return;
 		}
 	}
