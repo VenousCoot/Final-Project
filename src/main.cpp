@@ -92,7 +92,7 @@ int main()
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STAGE BEGIN: SECURITY  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         security.enter(); // Call the security function to start next stage
-        auto TSA_Agent = make_unique<NPC>("TSA Agent", 20, 2, 80, 10, 10, 0, 0); // Create the TSA NPC
+        auto TSA_Agent = make_unique<NPC>("TSA Agent", 20, 2, 60, 30, 10, 0, 0); // Create the TSA NPC
         cout << "Press Enter to continue...";
         cin.get(); // Waits for the user to press Enter;
 
@@ -129,7 +129,7 @@ int main()
                 gate.setBoardingPass(true);
             }
         } else if(player.get_check(2)){
-            auto shopKeep = make_unique<NPC>("Shopkeep", 5, 2, 80, 10, 10, 0, 0); // Create the TSA NPC
+            auto shopKeep = make_unique<NPC>("Shopkeep", 35, 5, 30, 50, 0, 10, 0); // Create the TSA NPC
             cout << "Press Enter to continue...";
             cin.get(); // Waits for the user to press Enter;
 
@@ -153,7 +153,7 @@ int main()
             }
                 
         } else {
-            auto annoyed_man = make_unique<NPC>("Annoyed Man", 30, 2, 80, 10, 10, 0, 0); // Create the TSA NPC
+            auto annoyed_man = make_unique<NPC>("Annoyed Man", 15, 3, 20, 57, 18, 5, 0); // Create the TSA NPC
             cout << "Press Enter to continue...";
             cin.get(); // Waits for the user to press Enter;
 
@@ -184,7 +184,8 @@ int main()
         if (end_time - start_time < TTF){
             pLBL("Gate Agent: Sorry, your flight has left already without you.");
             pLBL("Omnipresent Voice: ... HAHAHAHHAHAHAHAHAHHAHHAHAHHAHAHAHAHAHAH... ");
-            pLBL(" HAHAHHAHA... wow. Wow. WOW! You really messed this up huh. Maybe if you spent less time beating up random people and more time actually going to your gate...");
+            pLBL(" HAHAHHAHA... wow. Wow. WOW! You really messed this up huh. Maybe if you spent less time beating up random people");
+            pLBL("  and more time actually going to your gate...");
             pLBL(" YOU WOULDN'T HAVE TOTALLY MISSED YOUR FLIGHT HAHAHAHHAHAHAHAHHAHAHAHHAHAHAHAH");
             pLBL(" ... moron.");
             pLBL(" Game Over");
@@ -197,7 +198,7 @@ int main()
             cout << "Press Enter to continue...";
             cin.get(); // Waits for the user to press Enter;
         } else {
-            auto flight_attendant = make_unique<NPC>("Flight Attendant", 20, 2, 80, 10, 10, 0, 0); // Create the TSA NPC
+            auto flight_attendant = make_unique<NPC>("Flight Attendant", 20, 2, 53, 30, 10, 7, 0); // Create the TSA NPC
             cout << "Press Enter to continue...";
             cin.get(); // Waits for the user to press Enter;
 
@@ -229,7 +230,7 @@ int main()
         }
 
         plane.enter(); // Call the plane function to start next stage
-        auto the_captain = make_unique<NPC>("The Captain", 10, 2, 80, 10, 10, 0, 0);
+        auto the_captain = make_unique<NPC>("The Captain", 35, 4, 20, 60, 10, 7, 3);
         cout << "Press Enter to continue...";
         cin.get(); // Waits for the user to press Enter;
 
