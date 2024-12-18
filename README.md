@@ -6,9 +6,8 @@ Introduction to Board Quest
 Our journey begins with you ,The Player, and the most wonderful place in the world, Newark Liberty Airport. Your journey will not be an easy one, but I have faith that you will have the strength and courage to make it through this dastardly dungeon in one piece. Be safe and be swift ... because you have a plane to catch!!
 
 To run on Windows:
-1: Download the repository as a .zip file
-
-2: Extract into any directory
+1) Download the repository as a .zip file
+2) Extract into any directory
 3: Using CMake, for "Where is the source code", select the Final-Project-main as the source directory. (If this folder is layered with more Final-Project-main folders inside of one another, use the inner-most one)
 4: Using CMake, for "Where to build binaries", create a new folder named "build" inside of the Final-Project-main folder that you chose for the previous step. Use this new build folder
 5: Using CMake, bottom left corner, select "configure". Do not chose anything in the popup windows and just select "Finish".
