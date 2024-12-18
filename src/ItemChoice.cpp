@@ -135,7 +135,7 @@ void GateItems(main_character& mc) {
 	while (!validInput) {
 		cout << "1. Stun Gun - Increases Base Damage by 2!" << endl;
 		cout << "2. Security Vest - Reduce Damage taken by 2!" << endl;
-		cout << "3. Half a Hotdog and a Redbull - Increases Damage by 3 for one combat, but deals 3 damage to you! Is that mold?" << endl;
+		cout << "3. Half a Hotdog and a Redbull - Heals you for 10 health! Is that mold?" << endl;
 		getline(cin, playerInput);
 
 		if (playerInput == "1") {
@@ -153,7 +153,7 @@ void GateItems(main_character& mc) {
 			return;
 		}
 		else if (playerInput == "3") {
-			mc.add_item(Item("Half a Hotdog and a Redbull", "Potions", 3, -3, 0, false, false, false));
+			mc.add_item(Item("Half a Hotdog and a Redbull", "Potions", 0, 10, 0, false, false, false));
 			cout << "Added Half a Hotdog and a Redbull!" << endl;
 			cout << "... What's this?" << endl;
 			mc.add_item(Item("TSA Service Weapon", "Swords", 12, 0, 0, false, true, false));
