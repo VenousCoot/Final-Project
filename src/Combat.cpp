@@ -98,3 +98,4 @@ void Combat::resolveActions(NPC& npc, main_character& character, const std::stri
     pLBL(npc.getName() + " has " + std::to_string(npc.getHealth()) + " health remaining.");
     pLBL(character.get_name() + " has " + std::to_string(character.get_parameter("hp")) + " health remaining.");
 }
+//

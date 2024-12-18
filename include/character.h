@@ -8,7 +8,7 @@
 using namespace std;
 
 
-
+//
 class main_character {
     private:
         string name;

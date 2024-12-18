@@ -54,7 +54,7 @@ void initializeShopItems(std::vector<Item>& shopItems) {
     shopItems.push_back(Item("Shake Shack", "Potions", 0, 6, 20, true, true, false));
     shopItems.push_back(Item("First Class Boarding Pass", "Special", 0, 0, 140, true, false, false));
 }
-
+//
 // Display grouped items
 int purchaseItem(std::vector<Item>& shopItems, int playerCurrency, main_character& player) {
     std::cout << "Your Currency: $" << playerCurrency << std::endl;
