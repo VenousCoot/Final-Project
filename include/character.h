@@ -12,13 +12,13 @@ using namespace std;
 class main_character {
     private:
         string name;
-        int max_hp = 1000;
-        int hp = 1000;
-        int att = 10;
+        int max_hp = 20;
+        int hp = 20;
+        int att = 5;
         int def = 2;
         int sd = 0;
         int sa = 0;
-        int money = 150;
+        int money = 3;
         vector <Item> inventory;
         vector <bool> checks; // Sets the boolean check that the player may or may not need to have options. 
     public:
