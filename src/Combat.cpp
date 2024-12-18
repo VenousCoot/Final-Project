@@ -92,7 +92,7 @@ void Combat::resolveActions(NPC& npc, main_character& character, const std::stri
         pLBL(npc.getName() + " uses a special attack on " + character.get_name() + " for " + std::to_string(npc.getAttack() * 2) + " damage.");
     } else if (npcAction == "insta kill") {
         character.update_parameter("hp", -character.get_parameter("hp"));
-        pLBL(npc.getName() + " performs an insta kill on " + character.get_name() + ".");
+        pLBL(npc.getName() + " Air Marshal Símon Muler 'escorts' you off the aircraft.");
     }
 
     pLBL(npc.getName() + " has " + std::to_string(npc.getHealth()) + " health remaining.");

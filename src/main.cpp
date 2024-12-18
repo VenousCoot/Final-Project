@@ -68,7 +68,7 @@ int main()
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STAGE BEGIN: LOBBY  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         lobby.enter();
-        auto Receptionist = make_unique<NPC>("Receptionist", 10, 2, 80, 10, 10, 0, 0);
+        auto Receptionist = make_unique<NPC>("Receptionist", 10, 1, 80, 10, 10, 0, 0);
         cout << "Press Enter to continue...";
         cin.get(); // Waits for the user to press Enter;
 
@@ -181,7 +181,7 @@ int main()
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STAGE BEGIN: GATE  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
         long long end_time = static_cast<unsigned>(time(0));
         TTF = TTF * 60;
-        if (end_time - start_time < TTF){
+        if (end_time - start_time > TTF){
             pLBL("Gate Agent: Sorry, your flight has left already without you.");
             pLBL("Omnipresent Voice: ... HAHAHAHHAHAHAHAHAHHAHHAHAHHAHAHAHAHAHAH... ");
             pLBL(" HAHAHHAHA... wow. Wow. WOW! You really messed this up huh. Maybe if you spent less time beating up random people");

@@ -83,7 +83,7 @@ int purchaseItem(std::vector<Item>& shopItems, int playerCurrency, main_characte
                 std::cout << "Remaining Currency: $" << playerCurrency << std::endl;
 
                 if (selectedItem.name == "Laptop Bag") {
-                    std::cout << "Equipped Laptop Bag: DEF stat increased by 2!" << std::endl;
+                    std::cout << "Equipped Laptop Bag: ATK stat increased by 2!" << std::endl;
                     player.apply_item(selectedItem);
                 } else {
                     player.add_item(selectedItem);

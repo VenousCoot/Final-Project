@@ -12,7 +12,7 @@ using namespace std;
 class main_character {
     private:
         string name;
-        int max_hp = 20;
+        int max_hp = 30;
         int hp = 20;
         int att = 5;
         int def = 2;
