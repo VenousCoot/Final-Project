@@ -3,8 +3,18 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "Items.h"
+#include "character.h"
 
 using namespace std;
+
+void Gate::setBoardingPass(bool value){
+    Gate::hasFirstClassBoardingPass = value;
+}
+
+void Plane::setStylishHat(bool value){
+    Plane::hasStylishHat = value;
+}
 
 Lobby::Lobby() {
     description = "Omnipresent Voice: This is the lobby of Terminal A. What wonderful news, There's a receptionist right here for you to talk to!";
@@ -81,7 +91,7 @@ void Lobby::enter() {
     }
 }
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SECURITY
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SECURITY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Security::Security() {
 	description = "Omnipresent Voice: You really beat up that middle aged woman didn't you? You feeling good about yourself? You feel like you're top dog now don't you?";
@@ -127,7 +137,7 @@ Terminal::Terminal() {
 	npcName2 = "Shopkeep";
 }
 
-void Terminal::enter() {
+void Terminal::enterTerminal(main_character& player) {
 	printLetterByLetter( description );
     printLetterByLetter( "Moving past your violent tendencies. This is terminal A, Newark's brand new terminal! It has 33 gates and over a dozen unique restaurants!");
 	printLetterByLetter(  "Not that it matters to you since you're probably just going to go get into a fight someone else, but I thought that I should at least let you know.");
@@ -153,12 +163,15 @@ void Terminal::enter() {
 				cout << "2. If it's fully self-checkout why are you here?" << endl;
 				getline(cin, playerInput);
 				if (playerInput == "1") {
-                    printLetterByLetter(npcName2 + ": Please have a look at what's in stock!" );
+                    player.updateChecks(1, true); // set shop to true
+                    // player.shop = true; 
                     return;
                     // Bring to shop					
 				}
 				else if (playerInput == "2"){
                     printLetterByLetter(npcName2 + ": To keep assholes like you out.");
+                    // player.shopKeep = true;
+                    player.updateChecks(2, true); // set fightshopkeep to true
                     return; // Return to main for combat
 				}
 				else {
@@ -209,7 +222,7 @@ Gate::Gate(bool hasFirstClassBoardingPass) : hasFirstClassBoardingPass(hasFirstC
     npcName = "Flight Attendant";
 }
 
-void Gate::enter() {
+void Gate::enterGate(main_character& player) {
     printLetterByLetter( description );
     printLetterByLetter( "You actually managed to make it to your gate despite the extreme violence you have shown during our time together. Or maybe I should say that you made it this far THANKS to the violence." );
     printLetterByLetter( "Just go up to the front and wait for your group to be called, and please, for the love of all that is good, do not start a fight." );
@@ -265,7 +278,7 @@ void Gate::enter() {
 
                 if (playerInput == "1") {
                     printLetterByLetter(npcName + ": No identification, no entry." );
-                    return;
+                    return; // FIGHT
                 }
                 else if (playerInput == "2") {
                     srand(static_cast<unsigned int>(time(0)));
@@ -273,6 +286,7 @@ void Gate::enter() {
                     if (randomValue == 0) {
                         printLetterByLetter(npcName + ": Oh of course! You seem so confident I don't even have to check!" );
                         printLetterByLetter( "Please go right ahead." );
+                        player.updateChecks(4, true); // Set the fight skip to true
                         return;
                         // Send them to floor 5 without fighting
                     }
@@ -298,7 +312,7 @@ void Gate::enter() {
                 cout << "1. What's 0A?" << endl;
                 cout << "2. Where's that?" << endl;
                 if (playerInput == "1" || playerInput == "2") {
-                    printLetterByLetter(npcName + ": Well thats the Captain's seat of course!" );
+                    printLetterByLetter(npcName + ": Well that's the Captain's seat of course!" );
                     return;
                 }
                 else {
@@ -368,3 +382,4 @@ void Plane::enter() {
 		}
 	}
 }
+
