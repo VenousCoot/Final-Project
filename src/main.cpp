@@ -47,9 +47,9 @@ int main()
     if (main_debug <= 0) {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INTRODUCTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         cout <<"==================================================================="<< endl;
-        printLetterByLetter("Welcome to Hell, Adventurer, this is Newark Liberty International Airport!");
-        printLetterByLetter("Voted the worst airport in the United States according to AirHelp's Global Airport Ranking (2019).");
-        printLetterByLetter("It looks like you have a flight departing in ... " + to_string(TTF) + " minutes!! Better Hurry!");
+        pLBL("Welcome to Hell, Adventurer, this is Newark Liberty International Airport!");
+        pLBL("Voted the worst airport in the United States according to AirHelp's Global Airport Ranking (2019).");
+        pLBL("It looks like you have a flight departing in ... " + to_string(TTF) + " minutes!! Better Hurry!");
         cout <<"===================================================================" << endl;
         int playerDamageReduction = 0;  // Default damage reduction
 
@@ -77,7 +77,7 @@ int main()
         if (player.get_parameter("hp") > 0) {
             cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining." << endl;
         } else {
-            printLetterByLetter("Thank you for playing, hope you win next time!");
+            pLBL("Thank you for playing, hope you win next time!");
             cin.get();
             return 1;
         }
@@ -101,7 +101,7 @@ int main()
         if (player.get_parameter("hp") > 0) {
             cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining." << endl;
         } else {
-            printLetterByLetter("Thank you for playing, hope you win next time!");
+            pLBL("Thank you for playing, hope you win next time!");
             cin.get();
             return 1;
         }
@@ -138,7 +138,7 @@ int main()
             if (player.get_parameter("hp") > 0) {
                 cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining." << endl;
             } else {
-                printLetterByLetter("Thank you for playing, hope you win next time!");
+                pLBL("Thank you for playing, hope you win next time!");
                 cin.get();
                 return 0;
             }
@@ -162,7 +162,7 @@ int main()
             if (player.get_parameter("hp") > 0) {
                 cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining." << endl;
             } else {
-                printLetterByLetter("Thank you for playing, hope you win next time!");
+                pLBL("Thank you for playing, hope you win next time!");
                 cin.get();
                 return 0;
             }
@@ -182,12 +182,12 @@ int main()
         long long end_time = static_cast<unsigned>(time(0));
         TTF = TTF * 60;
         if (end_time - start_time < TTF){
-            printLetterByLetter("Gate Agent: Sorry, your flight has left already without you.");
-            printLetterByLetter("Omnipresent Voice: ... HAHAHAHHAHAHAHAHAHHAHHAHAHHAHAHAHAHAHAH... ");
-            printLetterByLetter(" HAHAHHAHA... wow. Wow. WOW! You really messed this up huh. Maybe if you spent less time beating up random people and more time actually going to your gate...");
-            printLetterByLetter(" YOU WOULDN'T HAVE TOTALLY MISSED YOUR FLIGHT HAHAHAHHAHAHAHAHHAHAHAHHAHAHAHAH");
-            printLetterByLetter(" ... moron.");
-            printLetterByLetter(" Game Over");
+            pLBL("Gate Agent: Sorry, your flight has left already without you.");
+            pLBL("Omnipresent Voice: ... HAHAHAHHAHAHAHAHAHHAHHAHAHHAHAHAHAHAHAH... ");
+            pLBL(" HAHAHHAHA... wow. Wow. WOW! You really messed this up huh. Maybe if you spent less time beating up random people and more time actually going to your gate...");
+            pLBL(" YOU WOULDN'T HAVE TOTALLY MISSED YOUR FLIGHT HAHAHAHHAHAHAHAHHAHAHAHHAHAHAHAH");
+            pLBL(" ... moron.");
+            pLBL(" Game Over");
             return 1;
         }
 
@@ -206,7 +206,7 @@ int main()
             if (player.get_parameter("hp") > 0) {
                 cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining." << endl;
             } else {
-                printLetterByLetter("Thank you for playing, hope you win next time!");
+                pLBL("Thank you for playing, hope you win next time!");
                 cin.get();
                 return 0;
             }
@@ -238,7 +238,7 @@ int main()
         if (player.get_parameter("hp") > 0) {
             cout << player.get_name() << " survived the fight with " << player.get_parameter("hp") << " health remaining." << endl;
         } else {
-            printLetterByLetter("Thank you for playing, hope you win next time! (lol u died at the captain have fun restarting)");
+            pLBL("Thank you for playing, hope you win next time! (lol u died at the captain have fun restarting)");
             cin.get();
             return 1;
         }
@@ -247,36 +247,36 @@ int main()
 
 
 
-        printLetterByLetter("Narrator: As you sit in the captain's chair, you realize how much work it took to get here and reminisce in the glory that is your perserverence...");
+        pLBL("Narrator: As you sit in the captain's chair, you realize how much work it took to get here and reminisce in the glory that is your perserverence...");
         cin.get();
-        printLetterByLetter("Narrator: Even though there are hundreds of civilians inside, you decide you want to take this plane to the destination yourself...");
+        pLBL("Narrator: Even though there are hundreds of civilians inside, you decide you want to take this plane to the destination yourself...");
         cin.get();
-        printLetterByLetter("Narrator: You, with little to no piloting experience grab the yoke, and tell ATC that there is no option, you are already spooling up on the runway...");
+        pLBL("Narrator: You, with little to no piloting experience grab the yoke, and tell ATC that there is no option, you are already spooling up on the runway...");
         cin.get();
-        printLetterByLetter("Narrator: You haphazardly takeoff as the sound of pounding of the flight attendants on the bullet-proof door and the muffled screams of the passengers fade from your mind...");
+        pLBL("Narrator: You haphazardly takeoff as the sound of pounding of the flight attendants on the bullet-proof door and the muffled screams of the passengers fade from your mind...");
         cin.get();
-        printLetterByLetter("Narrator: You are finally at peace...");
+        pLBL("Narrator: You are finally at peace...");
         cin.get();
-        printLetterByLetter("Narrator: ...");
+        pLBL("Narrator: ...");
         cin.get();
-        printLetterByLetter("Narrator: ...");
+        pLBL("Narrator: ...");
         cin.get();
-        printLetterByLetter("Narrator: ...");
+        pLBL("Narrator: ...");
         cin.get();
-        printLetterByLetter("Narrator: And then you *almost* crash land into your destination: Philadelphia International Airport. \n");
+        pLBL("Narrator: And then you *almost* crash land into your destination: Philadelphia International Airport. \n");
         cin.get();
 
         cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-        printLetterByLetter("Congratulations! You beat the game!!!!\n");
-        printLetterByLetter("Your final money count is:" + to_string(player.get_parameter("money")) + ".");
-        printLetterByLetter("'BoardQuest' by Giuseppe Carbone, Shaan Sullivan, Achyutan Srinivasan, Aditi Priya-Swaminathan");
-        printLetterByLetter("This was a collaborative effort between all of us and we had a blast making it.");
-        printLetterByLetter("If you are our professor, we hope you had fun and this compiled and ran without any errors.");
-        printLetterByLetter("If you are some random person on the internet, thank you for playing our poorly made text-based rpg. We hope you enjoyed it and you rock!");
-        printLetterByLetter("Seriously it means the world to us that you even took the time to beat it in the first place. It was made to make the player suffer soooo.... Sorry!");
-        printLetterByLetter("Also, you should go out and play it again! There aren't multiple endings, but there are different routes and things that could end up happening (take a peek at the source code)");
-        printLetterByLetter("Consider reaching out to my email giuseppe687.gc2@gmail.com if you want to contact us for any reason (don't be an asshole this is not my primary email so I will just delete it / block you)");
-        printLetterByLetter("Have a wonderfull day! And thanks again for playing!:) ");
+        pLBL("Congratulations! You beat the game!!!!\n");
+        pLBL("Your final money count is:" + to_string(player.get_parameter("money")) + ".");
+        pLBL("'BoardQuest' by Giuseppe Carbone, Shaan Sullivan, Achyutan Srinivasan, Aditi Priya-Swaminathan");
+        pLBL("This was a collaborative effort between all of us and we had a blast making it.");
+        pLBL("If you are our professor, we hope you had fun and this compiled and ran without any errors.");
+        pLBL("If you are some random person on the internet, thank you for playing our poorly made text-based rpg. We hope you enjoyed it and you rock!");
+        pLBL("Seriously it means the world to us that you even took the time to beat it in the first place. It was made to make the player suffer soooo.... Sorry!");
+        pLBL("Also, you should go out and play it again! There aren't multiple endings, but there are different routes and things that could end up happening (take a peek at the source code)");
+        pLBL("Consider reaching out to my email giuseppe687.gc2@gmail.com if you want to contact us for any reason (don't be an asshole this is not my primary email so I will just delete it / block you)");
+        pLBL("Have a wonderfull day! And thanks again for playing!:) ");
         cin.get();
     }
 

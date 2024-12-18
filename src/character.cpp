@@ -32,26 +32,26 @@ void main_character::set_name(const string name){
 // Function for player to pick a name for their character
 void main_character::pick_player_name(){
     string character_name;
-    printLetterByLetter("Please enter your name / The name of your character: ");
+    pLBL("Please enter your name / The name of your character: ");
     getline(cin, character_name); // Read entire line for name
 
     bool verified = false;
     while(!verified){
         string selection;
-        printLetterByLetter("Your name is: " + character_name + ".");
-        printLetterByLetter("Is this right? (Type '1' for yes, '2' for no): ");
+        pLBL("Your name is: " + character_name + ".");
+        pLBL("Is this right? (Type '1' for yes, '2' for no): ");
         getline(cin, selection);
         while(selection != "1" && selection != "2"){
-            printLetterByLetter("Input a number buddy... either 1 or 2: ");
+            pLBL("Input a number buddy... either 1 or 2: ");
             getline(cin, selection); // Read entire line for selection
         }
 
         if (selection == "1"){
             set_name(character_name); // Update the main_character object with the confirmed name
-            printLetterByLetter("Okay, then let's continue, " + get_name() + "!");
+            pLBL("Okay, then let's continue, " + get_name() + "!");
             verified = true;
         } else if (selection == "2"){
-            printLetterByLetter("Please re-input your name!: ");
+            pLBL("Please re-input your name!: ");
             getline(cin, character_name); // Read entire line for new name
         }
     }
@@ -61,8 +61,8 @@ void main_character::pick_player_name(){
 string main_character::player_action() {
     bool verify = false;
     string action;
-    printLetterByLetter("What would you like to do? (Enter the number associated with the action)\n");
-    printLetterByLetter("Choices: Attack (1), Defend (2), Item (3): ");
+    pLBL("What would you like to do? (Enter the number associated with the action)\n");
+    pLBL("Choices: Attack (1), Defend (2), Item (3): ");
     getline(cin, action);
 
     while (!verify) {
@@ -74,7 +74,7 @@ string main_character::player_action() {
             Item item = use_item();
             if (item.name == "none") {
                 // If no item was used, loop back to the options
-                printLetterByLetter("Choices: Attack (1), Defend (2), Item (3): ");
+                pLBL("Choices: Attack (1), Defend (2), Item (3): ");
                 getline(cin, action);
                 continue;
             } else if (item.damage != 0) {
@@ -83,9 +83,9 @@ string main_character::player_action() {
                 return "item";
             }
         } else {
-            printLetterByLetter("Okay wise guy, how about you enter something valid here 0_0");
+            pLBL("Okay wise guy, how about you enter something valid here 0_0");
         }
-        printLetterByLetter("Choices: Attack (1), Defend (2), Item (3): ");
+        pLBL("Choices: Attack (1), Defend (2), Item (3): ");
         getline(cin, action);
     }
     return "None";
@@ -108,7 +108,7 @@ int main_character::get_parameter(const string& option) {
     } else if (option == "money") {
         return main_character::money;
     } else {
-        printLetterByLetter("Invalid parameter name input. ERROR IN: character.cpp (get)");
+        pLBL("Invalid parameter name input. ERROR IN: character.cpp (get)");
         return -1; // Return a specific value for invalid parameters
     }
 }
@@ -119,7 +119,7 @@ void main_character::update_parameter(const string& parameter, int update_amount
 
     // Check for valid parameter
     if (old_p == -1) {
-        printLetterByLetter("Invalid Parameter Name");
+        pLBL("Invalid Parameter Name");
         return;
     }
 
@@ -160,7 +160,7 @@ void main_character::parameter_selection(const string& param_name, int value) {
     } else if (param_name == "money") {
         main_character::money = value;
     } else {
-        printLetterByLetter("Invalid parameter name input. ERROR IN: character.cpp (set)\n");
+        pLBL("Invalid parameter name input. ERROR IN: character.cpp (set)\n");
     }
 }
 
@@ -172,16 +172,16 @@ void main_character::add_item(Item item){
     }else if (item.name == "First Class Boarding Pass"){
         main_character::updateChecks(3,true); // set first class boarding pass to true
         inventory.push_back(item);
-        printLetterByLetter("Added " + item.name + " to the inventory!");
+        pLBL("Added " + item.name + " to the inventory!");
     } else if (item.name == "Stylish Hat") {
         main_character::updateChecks(5, true);
-        printLetterByLetter("Added " + item.name + " to the inventory!");
+        pLBL("Added " + item.name + " to the inventory!");
     }else if (item.name == "TSA Service Weapon"){
         inventory.push_back(item);
-        printLetterByLetter("Added TSA Service Weapon! One in the Chamber! Deals 12 Damage!");
+        pLBL("Added TSA Service Weapon! One in the Chamber! Deals 12 Damage!");
     } else {
         inventory.push_back(item);
-        printLetterByLetter("Added " + item.name + " to the inventory!");
+        pLBL("Added " + item.name + " to the inventory!");
     }
     
 }
@@ -198,8 +198,8 @@ void main_character::remove_item(const string& item_name) {
 }
 
 void main_character::display_inventory() const {
-    printLetterByLetter("Inventory:");
-    printLetterByLetter("~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    pLBL("Inventory:");
+    pLBL("~~~~~~~~~~~~~~~~~~~~~~~~~~");
     for (const auto& item : inventory) {
         item.display();
     }
@@ -207,33 +207,33 @@ void main_character::display_inventory() const {
 }
 
 void main_character::display_all_parameters() const {
-    printLetterByLetter("Character Name: " + name + "");
-    printLetterByLetter("Max HP: " + to_string(max_hp) + "");
-    printLetterByLetter("Current HP: " + to_string(hp) + "");
-    printLetterByLetter("Attack: " + to_string(att) + "");
-    printLetterByLetter("Defense: " + to_string(def) + "");
-    printLetterByLetter("Special Defense: " + to_string(sd) + "");
-    printLetterByLetter("Special Attack: " + to_string(sa) + "");
-    printLetterByLetter("Money: " + to_string(money) + "");
+    pLBL("Character Name: " + name + "");
+    pLBL("Max HP: " + to_string(max_hp) + "");
+    pLBL("Current HP: " + to_string(hp) + "");
+    pLBL("Attack: " + to_string(att) + "");
+    pLBL("Defense: " + to_string(def) + "");
+    pLBL("Special Defense: " + to_string(sd) + "");
+    pLBL("Special Attack: " + to_string(sa) + "");
+    pLBL("Money: " + to_string(money) + "");
 }
 
 // Use item function:
 Item main_character::use_item() {
     if (inventory.empty()) {
-        printLetterByLetter("You have no items.\n");
+        pLBL("You have no items.\n");
         return Item("none", "none", 0, 0, 0, false, false, false); // Return a default-constructed Item object
     }
 
     std::string item_name;
     display_inventory();
-    printLetterByLetter("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    printLetterByLetter("Input the name of the item you want to use or type 'back' to go back: ");
+    pLBL("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    pLBL("Input the name of the item you want to use or type 'back' to go back: ");
     getline(std::cin, item_name);
 
     bool item_found = false;
     while (!item_found) {
         if (item_name == "back") {
-            printLetterByLetter("Returning to previous menu.");
+            pLBL("Returning to previous menu.");
             return Item("none", "none", 0, 0, 0, false, false, false); // Return a default-constructed Item object
         }
 
@@ -241,14 +241,14 @@ Item main_character::use_item() {
             if (it->get_name() == item_name) {
                 apply_item(*it); // Pass the Item object to apply_item
                 item_found = true;
-                printLetterByLetter(main_character::name + " used " + it->get_name() + ".");
+                pLBL(main_character::name + " used " + it->get_name() + ".");
                 main_character::display_all_parameters();
                 return *it;
             }
         }
 
         if (!item_found) {
-            printLetterByLetter("Item \"" + item_name + "\" not found in inventory. Please try again or type 'back' to go back: ");
+            pLBL("Item \"" + item_name + "\" not found in inventory. Please try again or type 'back' to go back: ");
             getline(std::cin, item_name);
         }
     }
@@ -260,22 +260,22 @@ Item main_character::use_item() {
 void main_character::apply_item(Item& item) {
     // Update parameters based on item properties
     if (item.name == "First Class Boarding Pass"){
-        printLetterByLetter("It's a boarding pass....");
+        pLBL("It's a boarding pass....");
         return;
     }
     if (item.name == "Stylish Hat") {
-        printLetterByLetter("Omnipresent voice: Cool hat huh???? RIGHT??? ");
+        pLBL("Omnipresent voice: Cool hat huh???? RIGHT??? ");
         return;
     }
     if (item.name == "Advil") {
         main_character::update_parameter("max_hp", item.health);
     }
     if (item.name == "Suspicious Ticking Suitcase") {
-        printLetterByLetter("Well, it's not a bomb... but you did lose your turn!");
+        pLBL("Well, it's not a bomb... but you did lose your turn!");
     }
     if (item.name == "Meat Shield" && item.isUsed == true){
-        printLetterByLetter("You pull a grandma in front of you to take the hit.... She dies");
-        printLetterByLetter("Omnipresent voice: Wow you're a piece of shit");
+        pLBL("You pull a grandma in front of you to take the hit.... She dies");
+        pLBL("Omnipresent voice: Wow you're a piece of shit");
     }
     if (item.damage != 0) {
         main_character::update_parameter("att", item.damage);

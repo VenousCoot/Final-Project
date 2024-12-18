@@ -3,7 +3,7 @@
 #include <thread>
 #include <chrono>
 
-void printLetterByLetter(const std::string& text, int delay) {
+void pLBL(const std::string& text, int delay) {
     for (char c : text) {
         std::cout << c;
         std::cout.flush(); // Flush the output buffer to ensure each character is printed immediately
