@@ -7,6 +7,7 @@ Our journey begins with you ,The Player, and the most wonderful place in the wor
 
 To run on Windows:
 1: Download the repository as a .zip file
+
 2: Extract into any directory
 3: Using CMake, for "Where is the source code", select the Final-Project-main as the source directory. (If this folder is layered with more Final-Project-main folders inside of one another, use the inner-most one)
 4: Using CMake, for "Where to build binaries", create a new folder named "build" inside of the Final-Project-main folder that you chose for the previous step. Use this new build folder
