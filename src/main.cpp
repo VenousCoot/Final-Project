@@ -151,7 +151,7 @@ int main()
             if(player.get_check(3)){
                 gate.setBoardingPass(true);
             }
-                
+
         } else {
             auto annoyed_man = make_unique<NPC>("Annoyed Man", 15, 3, 20, 57, 18, 5, 0); // Create the TSA NPC
             cout << "Press Enter to continue...";
