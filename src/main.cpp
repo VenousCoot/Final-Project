@@ -17,7 +17,7 @@ using namespace std;
 
 // Debug mode if = 1 then will print debugging messages example being object destroying messages
 int Debug = 0;
-int main_debug = 0; // Debug used if you want to go to a specific stage (1 for lobby, 2 for security, 3 for terminal, 4 for gate, 5 for cockpit).
+int main_debug = 3; // Debug used if you want to go to a specific stage (1 for lobby, 2 for security, 3 for terminal, 4 for gate, 5 for cockpit).
 bool check = false;
 
 // Create the object "Player"
@@ -145,7 +145,7 @@ int main()
             
             player.add_item(Item("Laptop Bag", "Swords", 2, 0, 60, false, false, false));
             player.add_item(Item("Meat Shield", "Shields", 0, 5, 60, true, true, false));
-            player.add_item(Item("Shake Shack", "Potions", 0, 6, 20, true, true, false));
+            player.add_item(Item("Shake Shack", "Potions", 0, 6, 20, true, false, false));
             player.add_item(Item("First Class Boarding Pass", "Special", 0, 0, 140, true, false, false));
 
             if(player.get_check(3)){

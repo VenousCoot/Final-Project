@@ -18,7 +18,7 @@ class main_character {
         int def = 2;
         int sd = 0;
         int sa = 0;
-        int money = 3;
+        int money = 150;
         vector <Item> inventory;
         vector <bool> checks; // Sets the boolean check that the player may or may not need to have options. 
     public:

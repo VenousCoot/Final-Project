@@ -51,7 +51,7 @@ void initializeGroupedItems(std::vector<Item>& shields, std::vector<Item>& sword
 void initializeShopItems(std::vector<Item>& shopItems) {
     shopItems.push_back(Item("Laptop Bag", "Swords", 2, 0, 60, false, false, false));
     shopItems.push_back(Item("Meat Shield", "Shields", 0, 5, 60, true, true, false));
-    shopItems.push_back(Item("Shake Shack", "Potions", 0, 6, 20, true, true, false));
+    shopItems.push_back(Item("Shake Shack", "Potions", 0, 6, 20, true, false, false));
     shopItems.push_back(Item("First Class Boarding Pass", "Special", 0, 0, 140, true, false, false));
 }
 //
@@ -66,36 +66,49 @@ int purchaseItem(std::vector<Item>& shopItems, int playerCurrency, main_characte
         }
 
         std::string choice;
-        std::cout << "Choose an item to buy (1-" << shopItems.size() << ") or press (5) to exit the shop without buying anything: ";
-        std::cin >> choice;
+        int itemIndex;
+        bool validInput = false;
 
-        if (choice == "5") {
+        while (!validInput) {
+            std::cout << "Choose an item to buy (1-" << shopItems.size() << ") or press (5) to exit the shop without buying anything: ";
+            std::cin >> choice;
+
+            try {
+                itemIndex = std::stoi(choice) - 1;
+                if (itemIndex >= -1 && itemIndex < static_cast<int>(shopItems.size())) {
+                    validInput = true;
+                } else {
+                    std::cout << "Invalid input. Please enter a number between 1 and 5." << std::endl;
+                }
+            } catch (const std::invalid_argument&) {
+                std::cout << "Invalid input. Please enter a number between 1 and 5." << std::endl;
+            } catch (const std::out_of_range&) {
+                std::cout << "Invalid input. Please enter a number between 1 and 5." << std::endl;
+            }
+        }
+
+        if (itemIndex == 4) {  // User chose to exit (5 - 1 = 4)
             std::cout << "ShopKeep: Thank you for coming!!" << std::endl;
             break;
         }
 
-        int itemIndex = std::stoi(choice) - 1;
-        if (itemIndex >= 0 && itemIndex < shopItems.size()) {
-            Item& selectedItem = shopItems[itemIndex];
-            if (playerCurrency >= selectedItem.cost) {
-                playerCurrency -= selectedItem.cost;
-                std::cout << "You bought: " << selectedItem.name << " for $" << selectedItem.cost << std::endl;
-                std::cout << "Remaining Currency: $" << playerCurrency << std::endl;
+        Item& selectedItem = shopItems[itemIndex];
+        if (playerCurrency >= selectedItem.cost) {
+            playerCurrency -= selectedItem.cost;
+            std::cout << "You bought: " << selectedItem.name << " for $" << selectedItem.cost << std::endl;
+            std::cout << "Remaining Currency: $" << playerCurrency << std::endl;
 
-                if (selectedItem.name == "Laptop Bag") {
-                    std::cout << "Equipped Laptop Bag: ATK stat increased by 2!" << std::endl;
-                    player.apply_item(selectedItem);
-                } else {
-                    player.add_item(selectedItem);
-                }
-
-                // Remove the purchased item from the shop
-                shopItems.erase(shopItems.begin() + itemIndex);
+            if (selectedItem.name == "Laptop Bag") {
+                std::cout << "Equipped Laptop Bag: ATK stat increased by 2!" << std::endl;
+                player.apply_item(selectedItem);
             } else {
-                std::cout << "Not enough currency to buy this item." << std::endl;
+                player.add_item(selectedItem);
             }
+
+            // Remove the purchased item from the shop
+            shopItems.erase(shopItems.begin() + itemIndex);
         } else {
-            std::cout << "Invalid choice!" << std::endl;
+            std::cout << "Not enough currency to buy this item." << std::endl;
         }
 
         if (shopItems.empty()) {
@@ -103,9 +116,21 @@ int purchaseItem(std::vector<Item>& shopItems, int playerCurrency, main_characte
             break;
         }
 
-        std::cout << "Would you like to buy another item? (1 for yes, 2 for no): ";
-        std::cin >> choice;
-        if (choice == "2") {
+        std::string continueChoice;
+        bool validContinueChoice = false;
+
+        while (!validContinueChoice) {
+            std::cout << "Would you like to buy another item? (1 for yes, 2 for no): ";
+            std::cin >> continueChoice;
+
+            if (continueChoice == "1" || continueChoice == "2") {
+                validContinueChoice = true;
+            } else {
+                std::cout << "Invalid input. Please enter 1 or 2." << std::endl;
+            }
+        }
+
+        if (continueChoice == "2") {
             std::cout << "ShopKeep: Have a nice day!" << std::endl;
             break;
         }
@@ -113,5 +138,6 @@ int purchaseItem(std::vector<Item>& shopItems, int playerCurrency, main_characte
 
     return playerCurrency;
 }
+
 
 

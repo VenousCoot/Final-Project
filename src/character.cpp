@@ -280,7 +280,7 @@ void main_character::apply_item(Item& item) {
     if (item.damage != 0) {
         main_character::update_parameter("att", item.damage);
     }
-    if (item.health != 0 && item.name != "Advil" && item.name != "Potions") {
+    if (item.health != 0 && item.name != "Advil" && item.category == "Potions") {
         main_character::update_parameter("hp", item.health);
     }
     if (item.health != 0 && item.category == "Shields") {

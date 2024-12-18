@@ -140,7 +140,7 @@ Terminal::Terminal() {
 void Terminal::enterTerminal(main_character& player) {
 	pLBL( description );
     pLBL( "Moving past your violent tendencies. This is terminal A, Newark's brand new terminal! It has 33 gates and over a dozen unique restaurants!");
-	pLBL(  "Not that it matters to you since you're probably just going to go get into a fight someone else, but I thought that I should at least let you know. \n");
+	pLBL(  "Not that it matters to you since you're probably just going to go get into a fight with someone else, but I thought that I should at least let you know. \n");
 
 	string playerInput;
 	bool validInput = false;
