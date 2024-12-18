@@ -24,8 +24,8 @@ Lobby::Lobby() {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOBBY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 void Lobby::enter() {
-    printLetterByLetter ( description );
-    printLetterByLetter( npcName + ": Welcome to Newark Airport! May I see your boarding pass?" );
+    printLetterByLetter ( description ); 
+    printLetterByLetter( npcName + ": Welcome to Newark Airport! May I see your boarding pass? \n" ) ;
 
     string playerInput;
     bool validInput = false;
@@ -37,7 +37,7 @@ void Lobby::enter() {
         getline(cin, playerInput);
 
         if (playerInput == "1") {
-            printLetterByLetter ( npcName + ": Hmm ...  this sure doesn`t seem like it`s yours. Got any ID?" );
+            printLetterByLetter ( npcName + ": Hmm ...  this sure doesn`t seem like it`s yours. Got any ID? \n" );
 
             validInput = false;
             while (!validInput) {
@@ -55,13 +55,13 @@ void Lobby::enter() {
                     return;
                 }
                 else {
-                    printLetterByLetter( npcName + ": I'm sorry, were you trying to say something?" );
-                    printLetterByLetter( "Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2." );
+                    printLetterByLetter( npcName + ": I'm sorry, were you trying to say something? \n" );
+                    printLetterByLetter( "Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2. \n" );
                 }
             }
         }
         else if (playerInput == "2") {
-            printLetterByLetter ( npcName + ": Listen here bub, if you don't have a boarding pass get the hell out of my line." );
+            printLetterByLetter ( npcName + ": Listen here bub, if you don't have a boarding pass get the hell out of my line. \n" );
 
             validInput = false;
             while (!validInput) {
@@ -79,14 +79,14 @@ void Lobby::enter() {
                     return;
                 }
                 else {
-                    printLetterByLetter(npcName + ": I'm sorry, were you trying to say something?");
-                    printLetterByLetter("Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2.");
+                    printLetterByLetter(npcName + ": I'm sorry, were you trying to say something? \n");
+                    printLetterByLetter("Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2. \n");
                 }
             }
         }
         else {
-            printLetterByLetter(npcName + ": I'm sorry, were you trying to say something?");
-            printLetterByLetter("Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2.");
+            printLetterByLetter(npcName + ": I'm sorry, were you trying to say something?\n");
+            printLetterByLetter("Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2. \n");
         }
     }
 }
@@ -100,8 +100,8 @@ Security::Security() {
 
 void Security::enter() {
 	printLetterByLetter( description );
-	printLetterByLetter( "Anyways this is the security check. Be careful the TSA here can be touchy!" );
-	printLetterByLetter( npcName + ": Single file line, shoes off. Hey you, get back in line! *points at you*");
+	printLetterByLetter( "Anyways this is the security check. Be careful the TSA here can be touchy! \n" );
+	printLetterByLetter( npcName + ": Single file line, shoes off. Hey you, get back in line! *points at you* \n");
 
 
 
@@ -123,8 +123,8 @@ void Security::enter() {
 			return;
 		}
 		else {
-            printLetterByLetter(npcName + ": I'm sorry, were you trying to say something?");
-            printLetterByLetter("Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2.");
+            printLetterByLetter(npcName + ": I'm sorry, were you trying to say something? \n");
+            printLetterByLetter("Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2. \n");
 		}
 	}
 }
@@ -140,7 +140,7 @@ Terminal::Terminal() {
 void Terminal::enterTerminal(main_character& player) {
 	printLetterByLetter( description );
     printLetterByLetter( "Moving past your violent tendencies. This is terminal A, Newark's brand new terminal! It has 33 gates and over a dozen unique restaurants!");
-	printLetterByLetter(  "Not that it matters to you since you're probably just going to go get into a fight someone else, but I thought that I should at least let you know.");
+	printLetterByLetter(  "Not that it matters to you since you're probably just going to go get into a fight someone else, but I thought that I should at least let you know. \n");
 
 	string playerInput;
 	bool validInput = false;
@@ -152,9 +152,9 @@ void Terminal::enterTerminal(main_character& player) {
 		getline(cin, playerInput);
 
 		if (playerInput == "1") {
-			printLetterByLetter("Omnipresent Voice: Wow, I wonder how long this non-violent streak of yours will last.");
+			printLetterByLetter("Omnipresent Voice: Wow, I wonder how long this non-violent streak of yours will last. \n");
 			printLetterByLetter( npcName2 + ": Welcome to the newest addition to Terminal A, Hudson Non-stop!");
-            printLetterByLetter("This is our fully self-checkout convenience store! Just grab what you need, and it is immediately pulled from your emergency savings account!");
+            printLetterByLetter("This is our fully self-checkout convenience store! Just grab what you need, and it is immediately pulled from your emergency savings account! \n");
 			
 			validInput = false;
 			while (!validInput) {
@@ -175,16 +175,16 @@ void Terminal::enterTerminal(main_character& player) {
                     return; // Return to main for combat
 				}
 				else {
-                    printLetterByLetter(npcName2 + ": I'm sorry, were you trying to say something?");
-					printLetterByLetter( "Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2.");
+                    printLetterByLetter(npcName2 + ": I'm sorry, were you trying to say something? \n");
+					printLetterByLetter( "Omnipresent Voice: Is it really that hard? Just pick a 1 or a 2. \n");
 				}
 			}
 			
 
 		}
 		else if (playerInput == "2") {
-			printLetterByLetter( "Omnipresent Voice: What a shocker you picked to look for a fight. I don't really know why I expected anything different from you.");
-            printLetterByLetter(npcName1 + ": HEY YOU!! My flight just got delayed 4 hours and you have the perfect face for punching!");
+			printLetterByLetter( "Omnipresent Voice: What a shocker you picked to look for a fight. I don't really know why I expected anything different from you. \n");
+            printLetterByLetter(npcName1 + ": HEY YOU!! My flight just got delayed 4 hours and you have the perfect face for punching! \n");
 
 			validInput = false;
 			while (!validInput) {
@@ -204,8 +204,8 @@ void Terminal::enterTerminal(main_character& player) {
 					return;
 				}
 				else {
-                    printLetterByLetter(npcName1 + ": WHAT DID YOU SAY TO ME!?!?!" );
-					printLetterByLetter( "Omnipresent Voice: For the first time you have 3 whole choices to make and you still choose to press a random button. I'm seriously starting to get worried for you." );
+                    printLetterByLetter(npcName1 + ": WHAT DID YOU SAY TO ME!?!?! \n" );
+					printLetterByLetter( "Omnipresent Voice: For the first time you have 3 whole choices to make and you still choose to press a random button. I'm seriously starting to get worried for you. \n" );
 
 				}
 			}
@@ -225,9 +225,9 @@ Gate::Gate(bool hasFirstClassBoardingPass) : hasFirstClassBoardingPass(hasFirstC
 void Gate::enterGate(main_character& player) {
     printLetterByLetter( description );
     printLetterByLetter( "You actually managed to make it to your gate despite the extreme violence you have shown during our time together. Or maybe I should say that you made it this far THANKS to the violence." );
-    printLetterByLetter( "Just go up to the front and wait for your group to be called, and please, for the love of all that is good, do not start a fight." );
+    printLetterByLetter( "Just go up to the front and wait for your group to be called, and please, for the love of all that is good, do not start a fight. \n" );
     printLetterByLetter( npcName + ": Now boarding groups 1 and 2! Now boarding groups 1 and 2!" );
-    printLetterByLetter( "Excuse me, may I see your boarding pass?" );
+    printLetterByLetter( "Excuse me, may I see your boarding pass? \n" );
 
     string playerInput;
     bool validInput = false;
@@ -243,7 +243,7 @@ void Gate::enterGate(main_character& player) {
         getline(cin, playerInput);
 
         if (playerInput == "1") {
-            printLetterByLetter(npcName + ": How did you even get here without a boarding pass?" );
+            printLetterByLetter(npcName + ": How did you even get here without a boarding pass? \n" );
 
             validInput = false;
             while (!validInput) {
@@ -261,13 +261,13 @@ void Gate::enterGate(main_character& player) {
                     return;
                 }
                 else {
-                    printLetterByLetter(npcName + ": I'm sorry, what are you trying to say?" );
-                    printLetterByLetter( "Omnipresent Voice: CAN YOU PLEASE STOP PRESSING RANDOM BUTTONS. Just pick either a 1 or a 2." );
+                    printLetterByLetter(npcName + ": I'm sorry, what are you trying to say? \n" );
+                    printLetterByLetter( "Omnipresent Voice: CAN YOU PLEASE STOP PRESSING RANDOM BUTTONS. Just pick either a 1 or a 2. \n" );
                 }
             }
         }
         else if (playerInput == "2") {
-            printLetterByLetter(npcName + ": Hmm... this sure doesn't seem like it's yours. Do you have any ID?" );
+            printLetterByLetter(npcName + ": Hmm... this sure doesn't seem like it's yours. Do you have any ID? \n" );
 
             validInput = false;
             while (!validInput) {
@@ -298,13 +298,13 @@ void Gate::enterGate(main_character& player) {
                     }
                 }
                 else {
-                    printLetterByLetter(npcName + ": I don't have time for this nonsense" );
-                    printLetterByLetter(npcName + "Omnipresent Voice: We have been together so long and you still refuse to press the right buttons." );
+                    printLetterByLetter(npcName + ": I don't have time for this nonsense. \n" );
+                    printLetterByLetter(npcName + "Omnipresent Voice: We have been together so long and you still refuse to press the right buttons. \n" );
                 }
             }
         }
         else if (playerInput == "3" && hasFirstClassBoardingPass) {
-            printLetterByLetter(npcName + ": Oh, a VIP! Please right this way. Your seat is 0A!" );
+            printLetterByLetter(npcName + ": Oh, a VIP! Please right this way. Your seat is 0A! \n" );
 
             validInput = false;
             while (!validInput) {
@@ -316,15 +316,15 @@ void Gate::enterGate(main_character& player) {
                     return;
                 }
                 else {
-                    printLetterByLetter(npcName + "Pardon?" );
-                    printLetterByLetter( "Omnipresent Voice: Seriously? This late in the game?" );
+                    printLetterByLetter(npcName + "Pardon? \n" );
+                    printLetterByLetter( "Omnipresent Voice: Seriously? This late in the game? \n" );
 
                 }
             }
         }
         else {
-            printLetterByLetter(npcName + ": I didn't quite catch that." );
-            printLetterByLetter( "Omnipresent Voice: CAN YOU PLEASE STOP PRESSING RANDOM BUTTONS. Just pick either a 1 or a 2." );
+            printLetterByLetter(npcName + ": I didn't quite catch that. \n" );
+            printLetterByLetter( "Omnipresent Voice: CAN YOU PLEASE STOP PRESSING RANDOM BUTTONS. Just pick either a 1 or a 2. \n" );
         }
     }
 }
@@ -339,10 +339,10 @@ Plane::Plane(bool hasStylishHat) : hasStylishHat(hasStylishHat){
 
 void Plane::enter() {
     printLetterByLetter( description );
-    printLetterByLetter("This is the last obstacle in your path. Usually I would ask you to not get into a fight here, but I honestly doubt that a choice in this scenario." );
-    printLetterByLetter( "Good Luck, Adventurer!" );
-    printLetterByLetter( npcName + ": My plane my rules! Rule number 1 is that I hate you and you can't fly on my plane." );
-    printLetterByLetter("Rule number 2 is that there are no further rules." );
+    printLetterByLetter("This is the last obstacle in your path. Usually I would ask you to not get into a fight here, but I honestly doubt that you have a choice in this scenario." );
+    printLetterByLetter( "Good Luck, Adventurer! \n" );
+    printLetterByLetter( npcName + ": My plane my rules moron! Rule number 1 is that I hate you and you can't fly on my plane. " );
+    printLetterByLetter("Rule number 2 is that there are no further rules. \n" );
 
 
 	string playerInput;
@@ -372,13 +372,13 @@ void Plane::enter() {
 			return;
 		}
 		else if (playerInput == "4" && hasStylishHat) {
-			printLetterByLetter( "Omnipresent Voice: That was never going to work." );
+			printLetterByLetter( "Omnipresent Voice: That was never going to work. \n" );
             printLetterByLetter(npcName + "Hmm ... No I think I'll beat you up now" );
 			return;
 		}
 		else {
-            printLetterByLetter(npcName + "What the hell are you talking about." );
-			printLetterByLetter( "Omnipresent Voice: Bruh" );
+            printLetterByLetter(npcName + "What the hell are you talking about. \n" );
+			printLetterByLetter( "Omnipresent Voice: Bruh \n" );
 		}
 	}
 }
