@@ -8,4 +8,4 @@ Our journey begins with you ,The Player, and the most wonderful place in the wor
 To Run:
 1) Download the repository as a .zip file
 2) Extract into any directory
-3) Using CMake
+3) Using CMake 
